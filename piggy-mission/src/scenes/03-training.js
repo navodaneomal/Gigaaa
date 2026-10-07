@@ -161,7 +161,7 @@
     );
 
     // props behind the pig: the whiteboard plan, cones, water bottle, ball basket
-    ctx.art(whiteboard(M.board || 'PLAN: 1 RUN · 2 PASS · 3 SHOOT · 4 BELIEVE'), { layer: 'mid' });
+    ctx.art(whiteboard(M.board), { layer: 'mid' });
     ctx.props.cone(L.mid, 236, 528, 0.8);
     ctx.props.cone(L.mid, 352, 534, 0.8);
     ctx.props.cone(L.mid, 724, 530, 0.8);
@@ -626,7 +626,7 @@
     ctx.fx.impact(face.x, face.y, { size: 3.6 });
     ctx.fx.sparkle(face.x, face.y - 10, { count: 6, color: '#fff6e9' });
     ctx.camera.shake(7, 300);
-    ctx.boom('BONK!', face.x + 50, face.y - 62, { size: 36, rot: -10, hold: 700 });
+    ctx.boom(ctx.M.signs.bonk, face.x + 50, face.y - 62, { size: 36, rot: -10, hold: 700 });
     pig.express('ow', 40);
     pig.pose({ headTilt: -20, nod: -3, tilt: -12, squash: 1.1, armL: 60, armR: 70, earL: -24, earR: -24 }, 70, 'outQuad');
     ball.arc(98, GROUND - ball.r, 680, 120, { spin: -620 }).then(function () {

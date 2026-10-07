@@ -52,6 +52,7 @@
       '<path d="M0 ' + -r + 'Q' + r * 0.5 + ' 0 0 ' + r + '" fill="none" stroke="#8d97ab" stroke-width="1.1"/>';
     var lastT = '';
     var stop = A.onFrame(function () {
+      if (!g.isConnected) return false; // removed by a scene clear: stop ticking
       // z = height above the ball's ground line (for shadows); y is the ball centre on screen
       var t = 'translate(' + f(p.x) + ' ' + f(p.y) + ') rotate(' + f(p.rot) + ') scale(' + f(p.scale) + ')';
       if (t !== lastT) {
@@ -221,6 +222,7 @@
       '<path d="M-20 -98c0 18 5 30 11 37" fill="none" stroke="#fff6c9" stroke-width="3" stroke-linecap="round" opacity="0.65"/>' +
       '<text x="0" y="-15" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="800" font-size="7" fill="#3a2414">1ST</text>';
     var stop = A.onFrame(function () {
+      if (!g.isConnected) return false; // removed by a scene clear: stop ticking
       g.setAttribute('transform', 'translate(' + f(p.x) + ' ' + f(p.y) + ') rotate(' + f(p.rot) + ') scale(' + f(p.scale) + ')');
       g.setAttribute('opacity', p.opacity);
     });
@@ -274,6 +276,7 @@
     }
     var level = { k: o.excited ? 1 : 0.15 };
     var stop = A.onFrame(function (dt, clock) {
+      if (!g.isConnected) return false; // removed by a scene clear: stop ticking
       for (var i = 0; i < people.length; i++) {
         var pp = people[i];
         var hop = Math.max(0, Math.sin(clock * (5 + level.k * 5) + pp.ph)) * (1.5 + level.k * 7);

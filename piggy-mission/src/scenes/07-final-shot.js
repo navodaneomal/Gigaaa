@@ -92,11 +92,14 @@
     ctx.slowmo(0.3, 250);
     var ring = post.ring;
     ball.p.ground = null;
-    var follow = ctx.loop(function () {
-      ctx.camera.state.x += (ball.p.x - ctx.camera.state.x) * 0.06;
-      ctx.camera.state.y += (ball.p.y + 30 - ctx.camera.state.y) * 0.06;
-    });
-    A.tween(ctx.camera.state, { zoom: 1.5 }, T.flight, 'inOutSine');
+    // reduced motion: the camera holds still while the ball flies
+    var follow = ctx.reduced
+      ? function () {}
+      : ctx.loop(function () {
+          ctx.camera.state.x += (ball.p.x - ctx.camera.state.x) * 0.06;
+          ctx.camera.state.y += (ball.p.y + 30 - ctx.camera.state.y) * 0.06;
+        });
+    if (!ctx.reduced) A.tween(ctx.camera.state, { zoom: 1.5 }, T.flight, 'inOutSine');
     // up and over, then down through the ring (between the post's back and the net)
     await ball.arc(ring.x, ring.y - 6, T.flight, 150, { spin: 300 });
     await ball.arc(ring.x, ring.y + 40, 380, 0, { spin: 60 });

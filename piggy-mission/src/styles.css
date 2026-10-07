@@ -140,6 +140,20 @@ button {
     width: calc(100dvh * 0.5625);
     border-radius: 0;
   }
+  /* phone held sideways: the stage is narrow, so the sound toggle moves out to the screen corner */
+  .sound-btn {
+    position: fixed;
+    top: calc(var(--safe-top) + 10px);
+    right: calc(env(safe-area-inset-right, 0px) + 12px);
+  }
+  .prompt {
+    width: max-content;
+    max-width: calc(100% - 12px);
+  }
+  .prompt__label {
+    white-space: normal;
+    min-width: 0;
+  }
 }
 .scene-view {
   position: absolute;
@@ -743,4 +757,16 @@ button {
     animation-iteration-count: 1 !important;
     transition-duration: 0.12s !important;
   }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }

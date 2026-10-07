@@ -137,14 +137,14 @@
     pig.express('determined', 200);
     var op = ctx.caption(M.operation, { style: 'line', pos: 'center', className: 'mc-op', enter: 'rise', stay: true });
     await op;
-    await ctx.wait(500);
+    await ctx.wait(T.operationHold);
     await pig.badSalute(function () {
       ctx.sfx('bonk');
       var h = pig.head();
       ctx.fx.impact(h.x + 2, h.y + 14, { size: 2.2 });
       ctx.fx.sparkle(h.x + 2, h.y + 10, { count: 4, color: '#fff6e9' });
-    });
-    await ctx.wait(T.salute * 0.15);
+    }, T.salute);
+    await ctx.wait(T.afterSalute);
     op.hide();
 
     // Objective
@@ -172,7 +172,7 @@
     ctx.sfx('powerUp');
     var suit = ctx.caption(M.suitUp, { style: 'hud', pos: 'top', stay: true });
     ctx.camera.to({ x: 180, y: 470, zoom: 1.35 }, 600, 'inOutCubic');
-    await spinChange(ctx);
+    await spinChange(ctx, ctx.T.mission.suitUp);
     suit.hide();
     pig.express('proud', 160);
     ctx.fx.sparkle(180, 500, { count: 12, power: 1.4 });
@@ -187,17 +187,18 @@
   }
 
   // a quick spinning costume change: each spin pops a piece of kit on
-  async function spinChange(ctx) {
+  async function spinChange(ctx, ms) {
     var pig = ctx.pig;
+    var spin = (ms || 1000) / 4; // four pieces of kit, one spin each
     var pieces = [['headband', 'pop'], ['jersey', 'zip'], ['shoes', 'pop'], ['wristbands', 'pop']];
     for (var i = 0; i < pieces.length; i++) {
-      await A.tween(pig.p, { facing: -1 }, 90, 'inQuad');
+      await A.tween(pig.p, { facing: -1 }, spin * 0.36, 'inQuad');
       if (i === 0) pig.express('happy', 60);
       pig.wear(pieces[i][0]);
       ctx.sfx(pieces[i][1]);
       ctx.fx.puff(180, 598, { count: 5, color: '#c9d6ff' });
-      await A.tween(pig.p, { facing: 1 }, 90, 'outQuad');
-      await ctx.wait(70);
+      await A.tween(pig.p, { facing: 1 }, spin * 0.36, 'outQuad');
+      await ctx.wait(spin * 0.28);
     }
     pig.outfit(true);
   }

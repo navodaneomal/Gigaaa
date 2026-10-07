@@ -31,10 +31,11 @@ window.PIGGY_TIMING = {
   mission: {
     scan: 900,
     rowStagger: 260,
-    operationHold: 1700,
-    salute: 1600,
+    operationHold: 500, // pause on "Operation: …" before the salute
+    salute: 1790, // the whole terrible salute (every step scales with this)
+    afterSalute: 240,
     objectiveHold: 1200,
-    suitUp: 1400,
+    suitUp: 1000, // four spins, one piece of kit each
     startHold: 1200,
   },
 
@@ -123,7 +124,7 @@ window.PIGGY_TIMING = {
   },
 
   podium: {
-    cardIn: 700,
+    cardIn: 80, // beat before the 1st-place card flips in
     onTop: 1300,
     trophyDrop: 900,
     lift: 700,

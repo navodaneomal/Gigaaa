@@ -23,22 +23,23 @@
   document.getElementById('gate-label').textContent = M.gate.start;
   document.getElementById('gate-note').textContent = M.gate.note;
   document.querySelector('.gate__title').textContent = M.gate.title;
+  if (M.gate.kicker) document.querySelector('.gate__kicker').textContent = M.gate.kicker;
   document.getElementById('replay-label').textContent = M.ending.replay;
 
   /* sound toggle */
   var soundBtn = document.getElementById('sound-btn');
   function paintSound() {
     var muted = P.audio.isMuted();
-    soundBtn.setAttribute('aria-pressed', muted ? 'false' : 'true');
     soundBtn.querySelector('.sound-btn__icon').textContent = muted ? '🔇' : '🔊';
     soundBtn.querySelector('.sound-btn__label').textContent = muted ? M.ui.soundOff : M.ui.soundOn;
-    soundBtn.setAttribute('aria-label', muted ? 'Sound is off. Turn sound on' : 'Sound is on. Turn sound off');
   }
   soundBtn.addEventListener('click', function (e) {
     e.stopPropagation();
     P.audio.unlock();
     P.audio.setMuted(!P.audio.isMuted());
     paintSound();
+    // mouse/touch: drop focus so Space/Enter go back to driving the film (keyboard users keep focus)
+    if (e.detail > 0) soundBtn.blur();
   });
   soundBtn.addEventListener('pointerdown', function (e) {
     e.stopPropagation();
@@ -86,6 +87,8 @@
     e.stopPropagation();
   });
   window.addEventListener('keydown', function (e) {
+    // a focused button (sound toggle, the gate button itself) handles its own keys
+    if (e.target && e.target.closest && e.target.closest('button')) return;
     if (!started && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
       begin();

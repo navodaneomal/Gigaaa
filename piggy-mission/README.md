@@ -1,7 +1,7 @@
 # 🐷🏐 Piggy’s Netball Mission
 
 A tiny animated good-luck film for **Chooty Bole**, starring a very professional pig.
-It’s made for phones: tap, swipe, hold and poke your way through it. It takes about four minutes and needs no login, no server and no letter.
+It’s made for phones: tap, swipe, hold and poke your way through it. It takes about five minutes and needs no login, no server and no letter.
 
 **The story:** a pig asleep at night → a netball **BONK** → *“Oh… It’s today.”* → **MISSION DETECTED** → a terrible salute → suiting up → a training montage (it does not go well, then it does) → poking the pig until it gets serious → four days, four little worlds → the final match vs **THE WORLD** → the final shot in slow motion → **SWISH** → 🏆 **WINNER** → 🥇 **1st place** (the trophy wins) → a quiet moment → *You got this.* → sunglasses → *“I trained you.”* → trips over the ball.
 

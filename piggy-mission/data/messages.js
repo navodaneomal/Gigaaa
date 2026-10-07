@@ -3,12 +3,23 @@
  * Emoji are fine. Keep lines short: this is a film, not a letter.
  */
 window.PIGGY_MESSAGES = {
-  name: 'Chooty Bole',
-
   gate: {
+    kicker: 'A tiny film for Chooty Bole',
     title: 'Piggy’s Netball Mission',
     start: 'Tap to begin',
-    note: 'Sound on 🔊 · about 2 minutes',
+    note: 'Sound on 🔊 · about 5 minutes',
+  },
+
+  // words painted into the scenery and the comic sound-effect words
+  signs: {
+    jersey: 'CB',
+    event: 'All-Island Netball',
+    cheer: 'Go Chooty!',
+    final: 'Final',
+    pennant: 'Go CB!',
+    sticker: 'Netball!',
+    bonk: 'BONK!',
+    tok: 'tok.',
   },
 
   opening: {
@@ -34,6 +45,7 @@ window.PIGGY_MESSAGES = {
   },
 
   training: {
+    board: 'PLAN: 1 RUN · 2 PASS · 3 SHOOT · 4 BELIEVE',
     title: 'Training montage',
     stretchGag: 'We’re fine.',
     dribbleGag: 'Calculated.',
@@ -47,6 +59,8 @@ window.PIGGY_MESSAGES = {
   },
 
   poke: {
+    note: ['MISSION:', '4 DAYS'],
+    boop: 'boop!',
     prompt: 'Tap the pig',
     reactions: ['Focus.', 'I’m training.', 'Stop poking me.', 'Do you want to help or what?', 'Fine. One more.'],
     final: 'Okay Chooty… let’s go.',
@@ -69,7 +83,7 @@ window.PIGGY_MESSAGES = {
     vs: 'vs',
     pass: 'Tap to pass',
     dodge: 'Tap to dodge',
-    shoot: 'Hold to shoot',
+    lastShot: 'Last shot.',
   },
 
   finalShot: {

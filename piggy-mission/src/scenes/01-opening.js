@@ -11,6 +11,7 @@
   var set = {}; // references shared between setup and play
 
   function setup(ctx) {
+    var S = ctx.M.signs;
     var L = ctx.layers;
     ctx.backdrop('#141a3d', '#272c5c');
 
@@ -35,7 +36,7 @@
         '<g id="op-calendar" transform="translate(236 150)">' +
         '<rect x="0" y="0" width="84" height="92" rx="6" fill="#fff6e9"/>' +
         '<rect x="0" y="0" width="84" height="22" rx="6" fill="#e66f92"/><rect x="0" y="14" width="84" height="8" fill="#e66f92"/>' +
-        '<text x="42" y="15.5" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="800" font-size="11" fill="#fff" letter-spacing="1">NETBALL!</text>' +
+        '<text x="42" y="15.5" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="800" font-size="11" fill="#fff" letter-spacing="1">' + esc(S.sticker.toUpperCase()) + '</text>' +
         '<g fill="#d8cfe0">' +
         gridSquares() +
         '</g>' +
@@ -51,7 +52,7 @@
         '<rect x="80" y="-8" width="16" height="8" rx="2" fill="#e66f92"/>' +
         '</g>' +
         // pennant
-        '<g transform="translate(200 92) rotate(8)"><path d="M0 0L62 10L0 22Z" fill="#5fd3b3"/><text x="8" y="15" font-family="Barlow Condensed, sans-serif" font-weight="800" font-size="10" fill="#1d2a66">GO CB!</text></g>',
+        '<g transform="translate(200 92) rotate(8)"><path d="M0 0L62 10L0 22Z" fill="#5fd3b3"/><text x="8" y="15" font-family="Barlow Condensed, sans-serif" font-weight="800" font-size="10" fill="#1d2a66">' + esc(S.pennant.toUpperCase()) + '</text></g>',
       { depth: 0.55 }
     );
     defs(ctx);
@@ -141,7 +142,7 @@
     // 1. the ball rolls in and taps the bed. Ear twitch… nothing.
     await ball.roll(108, T.rollIn, 'outQuad');
     ctx.sfx('bounce', 0, 0.12);
-    ctx.boom('tok.', 104, 512, { size: 16, color: '#fff6e9', rot: -6, hold: 400 });
+    ctx.boom(ctx.M.signs.tok, 104, 512, { size: 16, color: '#fff6e9', rot: -6, hold: 400 });
     await ctx.wait(260);
     await pig.pose({ earL: -12 }, 90, 'outQuad');
     await pig.pose({ earL: 22 }, 260, 'outElastic');
@@ -163,7 +164,7 @@
     ctx.fx.impact(head.x, head.y - 32, { size: 4 });
     ctx.fx.sparkle(head.x, head.y - 30, { count: 6, color: '#fff6e9' });
     ctx.camera.shake(7, 320);
-    ctx.boom('BONK!', head.x + 52, head.y - 70, { size: 38, rot: -10, hold: 900 });
+    ctx.boom(ctx.M.signs.bonk, head.x + 52, head.y - 70, { size: 38, rot: -10, hold: 900 });
     pig.boing(1.2);
     pig.pose({ earL: -18, earR: -18, nod: 0, headTilt: 0 }, 120, 'outQuad');
     pig.setMode('idle');
@@ -217,6 +218,12 @@
       c.setAttribute('transform', 'translate(49 58) scale(' + s.toFixed(3) + ') translate(-49 -58)');
     });
     A.tween(st, { k: 3 }, 1200, 'linear').then(stop, stop);
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
   }
 
   P.scenes.register({ id: 'opening', order: 10, title: 'Wake up', transition: 'fade', setup: setup, play: play });

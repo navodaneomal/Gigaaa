@@ -49,6 +49,7 @@
   }
 
   function buildArena(ctx) {
+    var S = ctx.M.signs;
     defs(ctx);
     ctx.backdrop('#070b1c', '#1a2459');
     // stands + crowd (slow parallax)
@@ -64,8 +65,8 @@
     ctx.art(
       '<rect x="-420" y="392" width="1200" height="26" fill="#0b1020"/>' +
         '<g font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="800" font-size="15" letter-spacing="2">' +
-        '<text x="-260" y="411" fill="#ffcf4d">ALL-ISLAND NETBALL</text><text x="40" y="411" fill="#5fd3b3">FINAL</text>' +
-        '<text x="160" y="411" fill="#ff8fab">GO CHOOTY!</text><text x="380" y="411" fill="#ffcf4d">ALL-ISLAND NETBALL</text></g>',
+        '<text x="-260" y="411" fill="#ffcf4d">' + esc(S.event.toUpperCase()) + '</text><text x="40" y="411" fill="#5fd3b3">' + esc(S.final.toUpperCase()) + '</text>' +
+        '<text x="160" y="411" fill="#ff8fab">' + esc(S.cheer.toUpperCase()) + '</text><text x="380" y="411" fill="#ffcf4d">' + esc(S.event.toUpperCase()) + '</text></g>',
       { layer: 'bg', depth: 0.85 }
     );
     // arena light rigs
@@ -135,6 +136,7 @@
     var pupils = g.querySelector('.mk-pupils');
     var xEyes = g.querySelector('.mk-x');
     var stop = A.onFrame(function (dt, clock) {
+      if (!g.isConnected) return false; // removed by a scene clear: stop ticking
       var bob = Math.sin(clock * 6 + x) * 1.5;
       g.setAttribute('opacity', p.opacity);
       shadow.setAttribute('transform', 'translate(' + p.x.toFixed(1) + ' ' + p.y.toFixed(1) + ') scale(' + p.scale.toFixed(3) + ')');
@@ -367,7 +369,8 @@
     await ctx.wait(T.landBeat);
     ctx.music('none', 1.2);
     ctx.ambience('crowd', 0.25, 1.2);
-    await ctx.caption(M.shoot, { style: 'hud', pos: 'upper', y: 26, hold: T.shootHint });
+    // not an instruction yet: the live "hold to shoot" prompt comes in the next scene
+    await ctx.caption(M.lastShot, { style: 'hud', pos: 'upper', y: 26, hold: T.shootHint });
     lift();
   }
 

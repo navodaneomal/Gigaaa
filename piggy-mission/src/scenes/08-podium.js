@@ -171,7 +171,7 @@
     // the broadcast card flips to 1ST PLACE
     var card = ctx.panel('<span class="pd-card__place">' + P.matchKit.esc(M.place) + '</span><span class="pd-card__name">' + P.matchKit.esc(M.name) + '</span>', 'pd-card');
     card.setAttribute('role', 'status');
-    await ctx.wait(80);
+    await ctx.wait(T.cardIn);
     card.classList.add('is-in');
     ctx.sfx('ding');
     ctx.camera.shake(3, 300);

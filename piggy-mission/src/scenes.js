@@ -44,8 +44,25 @@
     return Math.round(n * 100) / 100;
   }
 
+  var pointerHeld = false;
   function mount() {
     stage = document.getElementById('stage');
+    stage.addEventListener(
+      'pointerdown',
+      function (e) {
+        if (!isHud(e)) pointerHeld = true;
+      },
+      true
+    );
+    ['pointerup', 'pointercancel'].forEach(function (t) {
+      window.addEventListener(
+        t,
+        function () {
+          pointerHeld = false;
+        },
+        true
+      );
+    });
     svgRoot = document.getElementById('world');
     camG = document.getElementById('cam');
     layers = {
@@ -154,10 +171,18 @@
     var inner = document.createElement('span');
     inner.className = 'cap__text';
     el.appendChild(inner);
+    var typing = (o.type || o.style === 'hud') && !A.reduced();
+    if (typing) {
+      // screen readers get the whole line once, not letter by letter
+      inner.setAttribute('aria-hidden', 'true');
+      var sr = document.createElement('span');
+      sr.className = 'sr-only';
+      sr.textContent = text;
+      el.appendChild(sr);
+    }
     ui.appendChild(el);
     var enter = A.reduced() ? 'fade' : o.enter || 'pop';
     el.classList.add('enter-' + enter);
-    var typing = (o.type || o.style === 'hud') && !A.reduced();
     var shown;
     if (typing) {
       shown = typeText(inner, text, o.cps || 32, o.blips !== false);
@@ -347,7 +372,7 @@
       new Promise(function (res, rej) {
         var el = null;
         var hintTimer = A.wait(o.hintDelay == null ? T.tapHintDelay : o.hintDelay).then(function () {
-          if (label) {
+          if (label && !finished) {
             el = promptEl('prompt--tap' + (o.pos === 'top' ? ' prompt--top' : ''), '<span class="prompt__dot"></span><span class="prompt__label"></span>');
             el.querySelector('.prompt__label').textContent = label;
           }
@@ -441,7 +466,7 @@
           }
         }
         var offKeys = onKeys(function (e, phase) {
-          if (e.key !== ' ' && e.key !== 'Enter') return;
+          if (isHud(e) || (e.key !== ' ' && e.key !== 'Enter')) return;
           e.preventDefault();
           if (phase === 'down' && !e.repeat) down(e);
           if (phase === 'up') up();
@@ -449,6 +474,11 @@
         stage.addEventListener('pointerdown', down);
         window.addEventListener('pointerup', up);
         window.addEventListener('pointercancel', up);
+        // already pressing when the prompt appears? that counts
+        if (pointerHeld) {
+          held = true;
+          if (o.onStart) o.onStart();
+        }
         if (AUTO) A.wait(400).then(function () {
           finish(false);
         }, function () {});
@@ -498,6 +528,7 @@
         }
         el.querySelector('.swipe__btn').addEventListener('click', done);
         var offKeys = onKeys(function (e, phase) {
+          if (isHud(e)) return;
           if (phase === 'down' && (e.key === 'ArrowRight' || e.key === 'ArrowLeft' || e.key === ' ' || e.key === 'Enter')) {
             e.preventDefault();
             done();
@@ -595,7 +626,9 @@
   function letterbox(on) {
     stage.classList.toggle('is-letterbox', !!on);
   }
+  var slowSeq = 0; // a newer slowmo() (or clear()) cancels a ramp still running
   function slowmo(k, ms) {
+    var my = ++slowSeq;
     var from = { s: A.timeScale() };
     if (!ms) {
       A.setTimeScale(k);
@@ -605,6 +638,10 @@
     return new Promise(function (res) {
       var t = 0;
       A.onFrame(function (dt) {
+        if (my !== slowSeq) {
+          res();
+          return false;
+        }
         t += (dt / Math.max(0.05, A.timeScale())) * 1000;
         var p = Math.min(1, t / ms);
         A.setTimeScale(from.s + (k - from.s) * p);
@@ -677,6 +714,7 @@
       n.remove();
     });
     A.set(camera, { x: 180, y: 320, zoom: 1, rot: 0, sx: 0, sy: 0 });
+    slowSeq++;
     A.setTimeScale(1);
     letterbox(false);
     stage.className = stage.className.replace(/\bscene-\S+/g, '').trim();

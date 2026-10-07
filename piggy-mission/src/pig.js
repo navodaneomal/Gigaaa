@@ -113,6 +113,15 @@
     );
   }
 
+  // jersey initials come from data/messages.js (signs.jersey)
+  function jerseyText() {
+    var M = window.PIGGY_MESSAGES;
+    var t = (M && M.signs && M.signs.jersey) || 'CB';
+    return String(t).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
   function create(parent, opts) {
     opts = opts || {};
     var root = parent.ownerSVGElement || parent;
@@ -146,7 +155,7 @@
       '<path d="M-21 -61Q-11 -53 0 -53Q11 -53 21 -61" fill="none" stroke="' + C.trim + '" stroke-width="2.6" stroke-linecap="round"/>' +
       '<path d="M-29 -27Q0 -19 29 -27" fill="none" stroke="' + C.trim + '" stroke-width="1.6" opacity="0.8"/>' +
       '<rect x="-11" y="-46" width="22" height="16" rx="4" fill="#fff"/>' +
-      '<text x="0" y="-34" text-anchor="middle" font-family="Barlow Condensed, Nunito, sans-serif" font-weight="800" font-size="12.5" fill="' + C.jersey + '">CB</text>' +
+      '<text x="0" y="-34" text-anchor="middle" font-family="Barlow Condensed, Nunito, sans-serif" font-weight="800" font-size="12.5" fill="' + C.jersey + '">' + jerseyText() + '</text>' +
       '</g>' +
       // arms
       arm('L', -25, buff) + arm('R', 25, buff) +
@@ -423,6 +432,7 @@
     }
 
     var stopLoop = A.onFrame(function (dt) {
+      if (!g.isConnected) return false; // removed by a scene clear: stop ticking
       proc.t += dt;
       proc.tailT += dt * (0.5 + p.tailWag);
       if (proc.mode === 'walk' || proc.mode === 'run') proc.phase += dt * (proc.mode === 'run' ? 16 : 9) * proc.cycleSpeed;
@@ -648,15 +658,17 @@
         return A.tween(p, { lift: 0, squash: 1, legL: 0, legR: 0, nod: 0 }, ms, 'outBack');
       },
       // the hilariously bad salute: overshoots and bonks its own snout
-      badSalute: function (onBonk) {
-        return A.tween(p, { armR: -150, headTilt: -4 }, 160, 'outQuad')
+      // ms: total length (default 1790); every step scales with it
+      badSalute: function (onBonk, ms) {
+        var k = (ms || 1790) / 1790;
+        return A.tween(p, { armR: -150, headTilt: -4 }, 160 * k, 'outQuad')
           .then(function () {
             if (onBonk) onBonk();
             pig.express('ow', 40);
-            return Promise.all([A.tween(p, { headTilt: 12, nod: 3, squash: 0.9 }, 90, 'outQuad'), A.tween(p, { armR: -118 }, 90, 'outQuad')]);
+            return Promise.all([A.tween(p, { headTilt: 12, nod: 3, squash: 0.9 }, 90 * k, 'outQuad'), A.tween(p, { armR: -118 }, 90 * k, 'outQuad')]);
           })
           .then(function () {
-            return A.tween(p, { headTilt: 0, nod: 0, squash: 1 }, 380, 'outElastic');
+            return A.tween(p, { headTilt: 0, nod: 0, squash: 1 }, 380 * k, 'outElastic');
           })
           .then(function () {
             pig.express('determined', 160);
@@ -664,15 +676,15 @@
             var t0 = A.clock();
             var stop = A.onFrame(function (dt, clock) {
               var e = clock - t0;
-              if (e > 0.9) return false;
+              if (e > 0.9 * k) return false;
               p.armR = -128 + Math.sin(e * 30) * 6;
               p.tilt = Math.sin(e * 12) * 2;
             });
-            return A.wait(900).then(stop, stop);
+            return A.wait(900 * k).then(stop, stop);
           })
           .then(function () {
             p.tilt = 0;
-            return pig.pose({ armR: 8 }, 260, 'outBack');
+            return pig.pose({ armR: 8 }, 260 * k, 'outBack');
           });
       },
       thumbsUp: function (side) {

@@ -125,7 +125,7 @@
   }
 
   function wallMarkup(M) {
-    var note = M.note || ['MISSION:', '4 DAYS'];
+    var note = M.note;
     if (typeof note === 'string') note = note.split(/:\s*/).length > 1 ? [note.split(/:\s*/)[0] + ':', note.split(/:\s*/).slice(1).join(': ')] : [note, ''];
     var bunting = '';
     var cols = ['#5fd3b3', '#ffcf4d', '#e66f92', '#7fb7ff'];
@@ -700,7 +700,7 @@
     set.jiggle.poke(head ? k * 0.7 : k, -side * (head ? 1.2 : 0.7));
     if (!req.silent) {
       ctx.fx.impact(pt.x, pt.y, { size: 2.4, color: '#fff6e9' });
-      ctx.boom(M.boop || 'boop!', pt.x + side * 34, pt.y - 24, { size: 17, rot: side * 10, color: '#fff6e9', hold: 280 });
+      ctx.boom(M.boop, pt.x + side * 34, pt.y - 24, { size: 17, rot: side * 10, color: '#fff6e9', hold: 280 });
     }
     var e0 = pig.p.earL;
     await A.tween(pig.p, { earL: e0 - (head ? 30 : 20), earR: pig.p.earR - (head ? 30 : 20) }, 70, 'outQuad');
@@ -733,6 +733,7 @@
   async function r1(ctx, req, T, M) {
     var pig = ctx.pig;
     var idle = set.idle;
+    if (!idle.st.on) idle.start(); // a poke during the idle nudge leaves it stopped
     var pt = req.pt || bellyPoint(ctx);
     await poked(ctx, req, 1, M);
     A.tween(idle.st, { speed: 0 }, 140, 'outQuad');
@@ -753,6 +754,7 @@
   async function r2(ctx, req, T, M) {
     var pig = ctx.pig;
     var idle = set.idle;
+    if (!idle.st.on) idle.start(); // a poke during the idle nudge leaves it stopped
     var pt = req.pt || bellyPoint(ctx);
     var dir = pt.x < pig.p.x ? -1 : 1;
     idle.force(1);

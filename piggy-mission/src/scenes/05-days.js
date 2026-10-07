@@ -73,7 +73,7 @@
         // banner
         '<rect x="-150" y="250" width="300" height="38" rx="8" fill="#1d2a66"/>' +
         '<rect x="-146" y="254" width="292" height="30" rx="6" fill="none" stroke="#ffcf4d" stroke-width="1.5"/>' +
-        '<text x="0" y="276" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="800" font-size="20" letter-spacing="1" fill="#fff">ALL-ISLAND NETBALL</text>' +
+        '<text x="0" y="276" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-style="italic" font-weight="800" font-size="20" letter-spacing="1" fill="#fff">' + esc(ctx.M.signs.event.toUpperCase()) + '</text>' +
         // entrance
         '<rect x="-46" y="450" width="92" height="110" rx="6" fill="#1d2a66"/>' +
         '<rect x="-40" y="456" width="40" height="104" fill="#7fb7ff" opacity="0.55"/><rect x="2" y="456" width="38" height="104" fill="#7fb7ff" opacity="0.4"/>' +
@@ -489,6 +489,12 @@
     stopDoors();
     ctx.flash('#ffffff', 600);
     await ctx.wait(300);
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
   }
 
   P.scenes.register({ id: 'days', order: 50, title: 'Four days', transition: 'fade', setup: setup, play: play });
