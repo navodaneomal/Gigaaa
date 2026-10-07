@@ -15,20 +15,6 @@
   var GROUND = 566;
   var SCALE = 1.18;
 
-  var DEFAULTS = {
-    enter: 1500, // walk into day 1
-    nervous: 1300,
-    inhale: 1100,
-    exhale: 700,
-    titleHold: 900,
-    lineHold: 1700,
-    travel: 2000, // pan to the next day
-    dribbleWalk: 2600,
-    sitBeat: 1600,
-    standBeat: 600,
-    doorsOpen: 1400,
-    intoLight: 1900,
-  };
 
   var set = {};
 
@@ -334,7 +320,7 @@
   }
 
   async function play(ctx) {
-    var T = Object.assign({}, DEFAULTS, ctx.T.days);
+    var T = ctx.T.days;
     var M = ctx.M.days;
     var pig = ctx.pig;
     var days = M.list;

@@ -11,20 +11,6 @@
 
   var GROUND = 566;
   var BALL_X = 236;
-  var DEFAULTS = {
-    shadesDrop: 700,
-    coolBeat: 900,
-    strut: 1700,
-    stopBeat: 500,
-    turn: 260,
-    hoofBeat: 400,
-    dontForget: 1400,
-    pause: 650,
-    trainedYou: 1300,
-    tripBeat: 700,
-    blackBeat: 600,
-    coachHold: 1700,
-  };
 
   P.scenes.css(
     'ending',
@@ -57,7 +43,7 @@
       '<g fill="#3d3570" opacity="0.85">' +
         '<path d="M-420 470Q-200 430 0 460T420 450T780 470V560H-420Z" opacity="0.6"/>' +
         '<rect x="300" y="250" width="6" height="250"/><rect x="284" y="240" width="38" height="16" rx="3"/>' +
-        '<circle cx="-40" cy="440" r="34"/><circle cx="-10" cy="430" r="26"/><circle cx="430" cy="440" r="30"/>' +
+        '<circle cx="-150" cy="440" r="34"/><circle cx="-120" cy="430" r="26"/><circle cx="470" cy="440" r="30"/>' +
         '</g>' +
         '<g stroke="#3d3570" stroke-width="2" opacity="0.7">' +
         fence() +
@@ -112,7 +98,7 @@
   }
 
   async function play(ctx) {
-    var T = Object.assign({}, DEFAULTS, ctx.T.ending);
+    var T = ctx.T.ending;
     var M = ctx.M.ending;
     var pig = ctx.pig;
     var ball = set.ball;
@@ -139,7 +125,8 @@
     var steps = ctx.every(480, function () {
       ctx.sfx('footstep');
     });
-    await pig.walkTo(40, T.strut, { cycle: 0.6, ease: 'inOutSine' });
+    ctx.camera.to({ x: 150, y: 400, zoom: 1.12 }, T.strut, 'inOutSine');
+    await pig.walkTo(72, T.strut, { cycle: 0.6, ease: 'inOutSine' });
     steps();
     await ctx.wait(T.stopBeat);
     ctx.music('none', 0.15);
@@ -153,8 +140,8 @@
 
     // 4. …a confident step forward, straight over the netball
     pig.pose({ armR: 8, headTilt: 0 }, 160);
-    var step = pig.walkTo(BALL_X - 22, 900, { cycle: 0.8 });
-    await step;
+    ctx.camera.to({ x: 232, y: 400, zoom: 1.12 }, 1100, 'inOutSine');
+    await pig.walkTo(BALL_X - 22, 900, { cycle: 0.8 });
     ctx.sfx('slideDown');
     ball.roll(BALL_X + 70, 700);
     pig.wear('shades', false);

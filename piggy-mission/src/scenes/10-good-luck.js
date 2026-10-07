@@ -10,21 +10,14 @@
   var A = P.anim;
 
   var GROUND = 566;
-  var DEFAULTS = {
-    intro: 900,
-    line: 1250,
-    gap: 280,
-    bigHold: 1300,
-    firstHold: 1800,
-  };
 
   P.scenes.css(
     'goodLuck',
     [
       '.gl-line{font:900 calc(var(--u)*30)/1.15 var(--font);color:#1d2a66;text-shadow:0 0 calc(var(--u)*14) rgba(255,255,255,.85),0 0 2px rgba(255,255,255,.9)}',
-      '.gl-big{font:italic 800 calc(var(--u)*44)/.95 var(--font-sport);text-transform:uppercase;color:#fff;',
+      '.gl-big{font:italic 800 calc(var(--u)*44)/.95 var(--font-sport);text-transform:uppercase;color:#fff;text-wrap:balance;',
       'text-shadow:calc(var(--u)*3) calc(var(--u)*3) 0 #e66f92,0 calc(var(--u)*6) calc(var(--u)*20) rgba(120,40,70,.35)}',
-      '.gl-first{font:italic 800 calc(var(--u)*34)/1 var(--font-sport);text-transform:uppercase;color:#ffcf4d;',
+      '.gl-first{font:italic 800 calc(var(--u)*32)/1 var(--font-sport);text-transform:uppercase;color:#ffcf4d;text-wrap:balance;',
       'text-shadow:calc(var(--u)*2.5) calc(var(--u)*2.5) 0 #b45d0c,0 0 calc(var(--u)*18) rgba(255,255,255,.6)}',
     ].join('')
   );
@@ -74,7 +67,7 @@
     pig.place(120, GROUND, { scale: 1.2, facing: 1 });
     pig.express('calm', 0);
     pig.setMode('idle');
-    ctx.camera.set({ x: 180, y: 360, zoom: 1 });
+    ctx.camera.set({ x: 185, y: 410, zoom: 1.22 });
     ctx.loop(function (dt, clock) {
       set.rays.setAttribute('transform', 'rotate(' + ((clock * 4) % 360).toFixed(2) + ' 250 400)');
     });
@@ -102,7 +95,7 @@
   }
 
   async function play(ctx) {
-    var T = Object.assign({}, DEFAULTS, ctx.T.goodLuck);
+    var T = ctx.T.goodLuck;
     var M = ctx.M.goodLuck;
     var pig = ctx.pig;
     var cup = set.cup;
@@ -165,7 +158,7 @@
     pig.hop(14);
     await ctx.wait(T.bigHold);
     ctx.sfx('ding');
-    var first = ctx.caption(M.first, { style: 'title', pos: 'upper', y: 27, className: 'gl-first', enter: 'slam', stay: true });
+    var first = ctx.caption(M.first, { style: 'title', pos: 'upper', y: 29, className: 'gl-first', enter: 'slam', stay: true });
     // the pig points at the trophy
     pig.express('proud', 200);
     await pig.lookAt(cup.p.x, cup.p.y - 50, 200);

@@ -383,7 +383,7 @@
     if (current && current.name === name) return;
     fade = fade == null ? 0.8 : fade;
     var t = ctx.currentTime;
-    if (current) {
+    if (current && current.bus) {
       var old = current.bus;
       old.gain.cancelScheduledValues(t);
       old.gain.setValueAtTime(old.gain.value, t);

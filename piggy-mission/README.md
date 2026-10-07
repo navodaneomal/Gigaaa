@@ -1,7 +1,7 @@
 # 🐷🏐 Piggy’s Netball Mission
 
 A tiny animated good-luck film for **Chooty Bole**, starring a very professional pig.
-It’s made for phones: tap, swipe, hold and poke your way through it. It takes about two minutes and needs no login, no server and no letter.
+It’s made for phones: tap, swipe, hold and poke your way through it. It takes about four minutes and needs no login, no server and no letter.
 
 **The story:** a pig asleep at night → a netball **BONK** → *“Oh… It’s today.”* → **MISSION DETECTED** → a terrible salute → suiting up → a training montage (it does not go well, then it does) → poking the pig until it gets serious → four days, four little worlds → the final match vs **THE WORLD** → the final shot in slow motion → **SWISH** → 🏆 **WINNER** → 🥇 **1st place** (the trophy wins) → a quiet moment → *You got this.* → sunglasses → *“I trained you.”* → trips over the ball.
 
@@ -14,7 +14,7 @@ It’s made for phones: tap, swipe, hold and poke your way through it. It takes 
 | **Just look** | Unzip and double-click `index.html`. It works offline, including fonts. |
 | **Local server** | `npm start`, then open <http://localhost:5173>. Needs Node 18+ and nothing else. |
 | **Netlify** | Drag this folder onto <https://app.netlify.com/drop>. |
-| **Vercel** | Import the repo, set **Root Directory** to `piggy-mission`, framework *Other*, no build command. |
+| **Vercel** | `sh scripts/package.sh` → unzip `dist/piggys-netball-mission.zip` → `npx vercel --prod` inside it. Or import the repo with **Root Directory** `piggy-mission`, framework *Other*, no build command (`vercel.json` + `.vercelignore` included). See `DEPLOY.md`. |
 | **GitHub Pages** | Settings → Pages → deploy from the branch. The film lives at `…/piggy-mission/`. `.nojekyll` is included. |
 | **Cloudflare Pages** | Root directory `piggy-mission`, no build command, output directory `/`. |
 
@@ -68,6 +68,8 @@ Handy URL switches: `?scene=match` (start at a scene), `?speed=3`, `?auto` (prom
 
 ```
 index.html                 stage, HUD, gate
+vercel.json                clean URLs, caching, security headers
+DEPLOY.md                  how to host it (Vercel, Netlify, Pages)
 data/messages.js           ← all text
 data/timing.js             ← all timing
 src/
@@ -81,4 +83,5 @@ src/
   styles.css               stage, type, prompts, HUD
 assets/fonts/              Nunito + Barlow Condensed (SIL OFL, see OFL.txt)
 tests/                     e2e.mjs, filmstrip.mjs
+scripts/                   serve.mjs, embed-fonts.mjs, package.sh (deploy ZIP)
 ```

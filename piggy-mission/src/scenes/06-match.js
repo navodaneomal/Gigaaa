@@ -12,25 +12,16 @@
   var GROUND = 560;
   var POST_X = 300; // pole; the ring hangs 22 units left of it
 
-  var DEFAULTS = {
-    runOn: 1400,
-    titleHold: 1100,
-    catchBeat: 500,
-    passFlight: 520,
-    lunge: 700,
-    dodge: 360,
-    whiff: 900,
-    drive: 1000,
-    landBeat: 700,
-    shootHint: 1400,
-  };
 
   P.scenes.css(
     'match',
     [
-      '.mk-board{left:50%;top:calc(var(--u)*46 + var(--safe-top));transform:translate(-50%,-140%);transition:transform .55s cubic-bezier(.2,1.4,.4,1);',
+      '.mk-board{left:50%;top:calc(var(--u)*46 + var(--safe-top));transform:translate(-50%,calc(-100% - var(--u)*60 - var(--safe-top)));opacity:0;',
+      'transition:transform .55s cubic-bezier(.2,1.4,.4,1),opacity .3s ease,top .6s cubic-bezier(.22,1,.36,1);',
       'display:flex;flex-direction:column;align-items:center;gap:calc(var(--u)*4);min-width:calc(var(--u)*270)}',
-      '.mk-board.is-in{transform:translate(-50%,0)}',
+      '.mk-board.is-in{transform:translate(-50%,0);opacity:1}',
+      // cinematic bars (slow motion) would cover the board: drop it just below the top bar
+      '.stage.is-letterbox .mk-board{top:calc(10% + var(--u)*6)}',
       '.mk-board__title{padding:calc(var(--u)*3) calc(var(--u)*12);border-radius:calc(var(--u)*6) calc(var(--u)*6) 0 0;background:#e66f92;color:#fff;',
       'font:italic 800 calc(var(--u)*13)/1.2 var(--font-sport);letter-spacing:.2em;text-transform:uppercase}',
       '.mk-board__row{display:flex;align-items:stretch;border-radius:calc(var(--u)*10);overflow:hidden;box-shadow:0 calc(var(--u)*10) calc(var(--u)*24) rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.15)}',
@@ -239,7 +230,7 @@
   }
 
   async function play(ctx) {
-    var T = Object.assign({}, DEFAULTS, ctx.T.match);
+    var T = ctx.T.match;
     var M = ctx.M.match;
     var pig = ctx.pig;
     var ball = set.ball;

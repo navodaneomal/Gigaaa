@@ -19,30 +19,6 @@
   var MIRROR_X = 265; // centre of the mirror glass
   var DUST = '#e9f6ef';
 
-  var DEFAULTS = {
-    jogIn: 950, // the pig trots onto the court
-    labelHold: 1300, // drill labels
-    freeze: 420, // the frozen beat after each mishap, before the deadpan look
-    gagLine: 1150, // bubble hold for the gag one-liners
-    wobble: 950, // stretch: balancing on one leg before it gives up
-    dribble: 260, // one dribble, down and up
-    jumpCharge: 1250, // the ridiculous wind-up for the tiny jump
-    jumpHold: 600, // the victory pose after landing, before it realises
-    jumpLine: 1500,
-    sprintOut: 430,
-    sprintBack: 780,
-    tiredWalk: 1500,
-    staminaMin: 900, // HUD stays at least this long before the tap prompt
-    passFlight: 1500,
-    passStare: 1300, // the long silent stare after the ball disappears
-    passLine: 1500,
-    shotFlight: 900,
-    swishHold: 1000,
-    celebrate: 1600,
-    mirrorBeat: 700,
-    nod: 620,
-    okayHold: 900,
-  };
 
   var set = {}; // references shared between setup and play
 
@@ -511,7 +487,7 @@
    * ==================================================================== */
 
   async function play(ctx) {
-    var T = Object.assign({}, DEFAULTS, ctx.T.training);
+    var T = ctx.T.training;
     var M = ctx.M.training;
     try {
       await intro(ctx, T, M);

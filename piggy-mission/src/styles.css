@@ -398,6 +398,10 @@ button {
   gap: calc(var(--u) * 8);
   bottom: calc(var(--u) * 26 + var(--safe-bottom));
 }
+/* cinematic bars are on (slow motion): keep prompts clear of the bottom bar */
+.stage.is-letterbox .prompt:not(.prompt--top) {
+  bottom: calc(10% + var(--u) * 12);
+}
 .hold__ring {
   position: relative;
   display: grid;

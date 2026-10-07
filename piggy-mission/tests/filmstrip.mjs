@@ -4,7 +4,7 @@
  *
  *   node tests/filmstrip.mjs --scene=training --frames=16 --every=700
  *        [--device="iPhone 13" | --device=desktop | --device=landscape | --device=se]
- *        [--query="&reduced"] [--out=sheet.png] [--keep=dir]
+ *        [--query="&reduced"] [--out=sheet.png] [--skip=ms] [--w=px]
  *
  * Starts its own server on a random port, prints console errors, writes
  * the sheet (default: tests/out/<scene>-<device>.png). Needs `playwright`.
@@ -39,6 +39,8 @@ const frames = +(args.frames || 16);
 const every = +(args.every || 700);
 const deviceName = args.device || 'iPhone 13';
 const query = args.query || '';
+const skip = +(args.skip || 0);
+const frameW = +(args.w || 0);
 const outDir = join(root, 'tests', 'out');
 mkdirSync(outDir, { recursive: true });
 const out = args.out || join(outDir, `${scene || 'film'}-${String(deviceName).replace(/\W+/g, '-')}.png`);
@@ -66,6 +68,7 @@ try {
   const q = scene ? `?scene=${scene}&auto${query}` : `?nogate&auto${query}`;
   await page.goto(`http://localhost:${port}/index.html${q}`);
   const shots = [];
+  if (skip) await page.waitForTimeout(skip);
   for (let i = 0; i < frames; i++) {
     await page.waitForTimeout(every);
     shots.push((await page.screenshot({ type: 'jpeg', quality: 70 })).toString('base64'));
@@ -76,12 +79,12 @@ try {
   });
   // compose the contact sheet in the browser itself
   const vp = page.viewportSize();
-  const cols = vp.width > vp.height ? 4 : 8;
-  const w = vp.width > vp.height ? 420 : 240;
+  const w = frameW || (vp.width > vp.height ? 420 : 240);
+  const cols = Math.max(1, Math.floor((vp.width > vp.height ? 1700 : 1960) / (w + 6)));
   const h = Math.round((w * vp.height) / vp.width);
   const sheetPage = await (await browser.newContext({ viewport: { width: cols * (w + 6) + 6, height: 200 } })).newPage();
   const html = `<body style="margin:0;background:#1d1d28;font:12px sans-serif;color:#ddd"><div style="display:grid;grid-template-columns:repeat(${cols},${w}px);gap:6px;padding:6px">${shots
-    .map((b, i) => `<div><div style="height:16px">${i} · ${((i + 1) * every / 1000).toFixed(1)}s</div><img style="width:${w}px;height:${h}px;display:block" src="data:image/jpeg;base64,${b}"></div>`)
+    .map((b, i) => `<div><div style="height:16px">${i} · ${((skip + (i + 1) * every) / 1000).toFixed(1)}s</div><img style="width:${w}px;height:${h}px;display:block" src="data:image/jpeg;base64,${b}"></div>`)
     .join('')}</div></body>`;
   await sheetPage.setContent(html);
   await sheetPage.waitForTimeout(200);

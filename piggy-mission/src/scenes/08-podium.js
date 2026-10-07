@@ -13,15 +13,6 @@
   var FLOOR = 588;
   var BLOCK_TOP = 474; // top of the 1st-place block
 
-  var DEFAULTS = {
-    cardIn: 700,
-    onTop: 1300,
-    trophyDrop: 900,
-    lift: 700,
-    struggle: 1900,
-    afterFall: 800,
-    thumbs: 1300,
-  };
 
   P.scenes.css(
     'podium',
@@ -138,12 +129,13 @@
   function fallenPose(ctx, x) {
     var pig = ctx.pig;
     pig.place(x, FLOOR, { scale: 1, facing: 1 });
-    A.set(pig.p, { rot: -88, lift: -8, squash: 1, armL: 60, armR: 60 });
+    A.set(pig.p, { rot: -88, lift: -8, tilt: 0, squash: 1, legL: 0, legR: 0, armL: 60, armR: 60 });
     pig.express('dizzy', 0);
   }
   function bellyPoint(ctx) {
     var pig = ctx.pig;
-    return pig.pointOn(pig.parts.torso, 0, -50);
+    pig.render(); // make sure the rig's transforms reflect pig.p right now
+    return pig.pointOn(pig.parts.torso, 0, -6);
   }
 
   P.podiumKit = { build: build, FLOOR: FLOOR, fallenPose: fallenPose, bellyPoint: bellyPoint, BLOCK_TOP: BLOCK_TOP };
@@ -164,7 +156,7 @@
   }
 
   async function play(ctx) {
-    var T = Object.assign({}, DEFAULTS, ctx.T.podium);
+    var T = ctx.T.podium;
     var M = ctx.M.podium;
     var pig = ctx.pig;
 
@@ -248,10 +240,11 @@
     follow();
     ctx.sfx('slideDown');
     var fall = pig.fall({ backward: true });
-    var land = A.tween(cup.p, { x: 200, rot: -8 }, 520, 'inQuad');
+    A.tween(pig.p, { tilt: 0, legL: 0, legR: 0 }, 300, 'outQuad');
+    var land = A.tween(cup.p, { x: 200, rot: -8, scale: 0.92 }, 520, 'inQuad');
     await fall;
     var belly = bellyPoint(ctx);
-    await Promise.all([land, A.tween(cup.p, { x: belly.x - 4, y: belly.y + 6 }, 160, 'inQuad')]);
+    await Promise.all([land, A.tween(cup.p, { x: belly.x + 6, y: belly.y - 6 }, 160, 'inQuad')]);
     ctx.sfx('thud');
     ctx.sfx('ding', 0.05);
     ctx.camera.shake(7, 360);

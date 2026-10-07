@@ -9,17 +9,6 @@
   var P = window.PIGGY;
   var A = P.anim;
 
-  var DEFAULTS = {
-    settle: 700,
-    lookHoop: 900,
-    lookYou: 900,
-    thoughtHold: 1500,
-    flight: 1500, // film ms; plays in slow motion
-    swishHold: 1100,
-    silence: 900,
-    winnerHold: 1700,
-    celebrate: 1500,
-  };
 
   var set = {};
 
@@ -54,7 +43,7 @@
   }
 
   async function play(ctx) {
-    var T = Object.assign({}, DEFAULTS, ctx.T.finalShot);
+    var T = ctx.T.finalShot;
     var M = ctx.M.finalShot;
     var pig = ctx.pig;
     var post = set.arena.post;

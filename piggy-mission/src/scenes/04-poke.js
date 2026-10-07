@@ -23,24 +23,6 @@
   var WIDE = { x: 180, y: 452, zoom: 1.12 };
   var CLOSE = { x: 180, y: 446, zoom: 2.3 };
 
-  var DEF = {
-    intro: 650, // iris settles, then the hint appears
-    anywhereAfter: 3000, // after this long without a poke, a tap anywhere counts
-    rehintAfter: 2600, // label comes back between pokes
-    nudgeAfter: 6000, // the pig nudges an idle viewer
-    autoAfter: 12000, // …and then plays the next reaction by itself
-    autoTestGap: 1000, // ?auto: pause between simulated pokes
-    lineHold: 1300,
-    longLineHold: 1750,
-    sideEye: 520,
-    deadpanPause: 700,
-    seriousBeat: 650,
-    push: 3400,
-    tugHold: 380,
-    beforeLine: 650,
-    finalPause: 850,
-    finalHold: 1100,
-  };
 
   var set = {};
 
@@ -994,7 +976,7 @@
   /* =========================================================== play */
 
   async function play(ctx) {
-    var T = Object.assign({}, DEF, ctx.T.poke);
+    var T = ctx.T.poke;
     var M = Object.assign({ prompt: 'Tap the pig', reactions: [], final: 'Okay Chooty… let’s go.' }, ctx.M.poke);
     var pig = ctx.pig;
     var gen = A.generation();

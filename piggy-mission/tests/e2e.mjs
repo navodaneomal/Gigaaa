@@ -69,7 +69,7 @@ async function playthrough() {
   const errors = watch(page);
   await page.goto(`${BASE}?speed=3`);
   const ids = await sceneIds(page);
-  await page.locator('#gate-btn').click();
+  await page.locator('#gate-btn').click({ force: true }); // the CTA bobs forever, so it is never "stable"
   const seen = [];
   const t0 = Date.now();
   let lastAction = Date.now();
@@ -132,7 +132,7 @@ async function playthrough() {
   check(ended, `film reaches the end (${Math.round((Date.now() - t0) / 1000)}s at 3× speed)`);
   check(JSON.stringify(seen) === JSON.stringify(ids), `every scene played, in order: ${seen.join(' → ')}`);
   check(pokes >= 5 || !ids.includes('poke'), `the pig was poked ${pokes} times`);
-  await page.locator('#replay-btn').click();
+  await page.locator('#replay-btn').click({ force: true });
   await page.waitForFunction(() => /scene-opening/.test(document.getElementById('stage').className), null, { timeout: 15000 }).catch(() => {});
   check(/opening/.test(await sceneOf(page)), '"Watch again" restarts the film');
   check(errors.length === 0, 'no console errors' + (errors.length ? ': ' + [...new Set(errors)].slice(0, 5).join(' | ') : ''));
@@ -229,7 +229,7 @@ async function fromDisk() {
   const pageErrors = [];
   page.on('pageerror', (e) => pageErrors.push(e.message));
   await page.goto(pathToFileURL(join(root, 'index.html')).href + '?speed=3');
-  await page.locator('#gate-btn').click();
+  await page.locator('#gate-btn').click({ force: true }); // the CTA bobs forever, so it is never "stable"
   await page.waitForFunction(() => /scene-opening/.test(document.getElementById('stage').className), null, { timeout: 10000 });
   await page.waitForTimeout(1500);
   const fonts = await page.evaluate(() => [...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family));

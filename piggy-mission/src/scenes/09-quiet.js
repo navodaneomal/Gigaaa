@@ -9,15 +9,6 @@
   var P = window.PIGGY;
   var A = P.anim;
 
-  var DEFAULTS = {
-    hush: 1300, // the sudden silence before anything moves
-    getUp: 1000,
-    setDown: 900,
-    approach: 2600,
-    line: 1500, // default hold per line
-    longLine: 2300,
-    gap: 450,
-  };
 
   P.scenes.css(
     'quiet',
@@ -41,7 +32,7 @@
     ctx.pig.setMode('idle');
     ctx.camera.set({ x: 190, y: 440, zoom: 1.18 });
     var belly = K.bellyPoint(ctx);
-    set.cup = ctx.props.trophy(ctx.layers.front, { x: belly.x - 4, y: belly.y + 6, scale: 1.12 });
+    set.cup = ctx.props.trophy(ctx.layers.front, { x: belly.x + 6, y: belly.y - 6, scale: 0.92 });
     set.cup.p.rot = -4;
     // darkness that only the spotlight escapes (between the set and the pig)
     set.dark = ctx.art('<rect x="-420" y="-400" width="1200" height="1440" fill="#05040f"/>', { layer: 'mid' });
@@ -51,7 +42,7 @@
   }
 
   async function play(ctx) {
-    var T = Object.assign({}, DEFAULTS, ctx.T.quiet);
+    var T = ctx.T.quiet;
     var lines = ctx.M.quiet.lines;
     var pig = ctx.pig;
     var cup = set.cup;

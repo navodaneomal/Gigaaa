@@ -1,0 +1,5 @@
+# Only the static site is deployed; dev tooling stays out of the bundle.
+tests
+scripts
+node_modules
+CONTRIBUTING-SCENES.md
