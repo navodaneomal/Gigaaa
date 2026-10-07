@@ -1,0 +1,16 @@
+{
+  "name": "piggys-netball-mission",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A tiny animated good-luck film starring a very professional pig.",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node tests/e2e.mjs",
+    "film": "node tests/filmstrip.mjs",
+    "fonts": "node scripts/embed-fonts.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED"
+}
