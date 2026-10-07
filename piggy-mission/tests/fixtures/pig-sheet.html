@@ -1,0 +1,37 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Pig sheet</title>
+<style>
+@font-face{font-family:'Nunito';src:url('../../assets/fonts/nunito.woff2') format('woff2');font-weight:400 900}
+@font-face{font-family:'Barlow Condensed';src:url('../../assets/fonts/barlow-condensed-800.woff2') format('woff2');font-weight:800}
+body{margin:0;background:#fdf3e7;font-family:Nunito}
+svg{display:block;width:100vw;height:auto}
+</style>
+<script src="../../data/timing.js"></script>
+<script src="../../src/animations.js"></script>
+<script src="../../src/pig.js"></script>
+</head><body>
+<svg id="s" viewBox="0 0 960 600"></svg>
+<script>
+const s = document.getElementById('s');
+const zoom = new URLSearchParams(location.search).get('zoom');
+if (zoom) {
+  s.setAttribute('viewBox','0 0 960 420');
+  ['determined','tired','embarrassed','ow'].forEach((e,i)=>{ const pig = PIGGY.Pig.create(s,{}); pig.place(120+i*240,400,{scale:2.6}); pig.express(e,0); pig.outfit(true); pig.setMode('none'); if(e==='ow') pig.pose({armR:-150},0); });
+  throw 'zoomed';
+}
+const looks = [
+  ['neutral',{}],['sleep',{}],['oneEye',{}],['surprised',{}],['happy',{}],['joy',{armL:150,armR:150}],
+  ['determined',{}],['deadpan',{}],['embarrassed',{}],['tired',{}],['proud',{armR:150}],['dizzy',{rot:0}],
+  ['ow',{armR:-150}],['calm',{}],['nervous',{}],['focused',{turn:0.8,lookX:1}],
+];
+looks.forEach(([e,pose],i)=>{
+  const x = 70 + (i%8)*118, y = 170 + Math.floor(i/8)*260;
+  const pig = PIGGY.Pig.create(s, {});
+  pig.place(x,y); pig.express(e,0); pig.pose(pose,0);
+  if (i>=6 && i<12) pig.outfit(true);
+  if (i===7) pig.wear('shades');
+  pig.setMode('none');
+  const t = PIGGY.anim.svg('text',{x, y:y+30,'text-anchor':'middle','font-size':13,'font-weight':800,fill:'#555'}, s); t.textContent=e;
+});
+const buff = PIGGY.Pig.create(s,{buff:true}); buff.place(880,430); buff.outfit(true); buff.express('determined',0); buff.setMode('none');
+</script></body></html>

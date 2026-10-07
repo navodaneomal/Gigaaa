@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Piggy’s Netball Mission 🐷🏐</title>
+  <meta name="description" content="A tiny animated good-luck film starring a very professional pig." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0b1020" />
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="assets/fonts/nunito.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/barlow-condensed-800-italic.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="src/styles.css" />
+  <script>
+    // Opened straight from disk? Browsers block font files on file://, so use the embedded copy.
+    if (location.protocol === 'file:') {
+      var l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = 'assets/fonts/fonts-inline.css';
+      document.head.appendChild(l);
+    }
+  </script>
+  <script defer src="data/messages.js"></script>
+  <script defer src="data/timing.js"></script>
+  <script defer src="src/animations.js"></script>
+  <script defer src="src/pig.js"></script>
+  <script defer src="src/props.js"></script>
+  <script defer src="src/audio.js"></script>
+  <script defer src="src/scenes.js"></script>
+  <script defer src="src/scenes/01-opening.js"></script>
+  <script defer src="src/scenes/02-mission.js"></script>
+  <script defer src="src/scenes/03-training.js"></script>
+  <script defer src="src/scenes/04-poke.js"></script>
+  <script defer src="src/scenes/05-days.js"></script>
+  <script defer src="src/scenes/06-match.js"></script>
+  <script defer src="src/scenes/07-final-shot.js"></script>
+  <script defer src="src/scenes/08-podium.js"></script>
+  <script defer src="src/scenes/09-quiet.js"></script>
+  <script defer src="src/scenes/10-good-luck.js"></script>
+  <script defer src="src/scenes/11-ending.js"></script>
+  <script defer src="src/main.js"></script>
+</head>
+<body>
+  <div class="viewport">
+    <div class="ambient" aria-hidden="true"></div>
+    <main class="stage" id="stage" aria-label="Piggy’s Netball Mission: a tiny animated good-luck film">
+      <div class="scene-view" id="scene-view">
+        <svg id="world" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+          <defs></defs>
+          <g id="cam">
+            <g id="layer-bg"></g>
+            <g id="layer-mid"></g>
+            <g id="layer-actors"></g>
+            <g id="layer-front"></g>
+            <g id="layer-fx"></g>
+          </g>
+        </svg>
+        <canvas id="confetti" aria-hidden="true"></canvas>
+        <div class="letterbox" aria-hidden="true"><i></i><i></i></div>
+        <div class="ui" id="ui" aria-live="polite"></div>
+      </div>
+      <div class="curtain" id="curtain" aria-hidden="true"></div>
+
+      <div class="hud">
+        <div class="progress" id="progress" aria-hidden="true"></div>
+        <button class="sound-btn" id="sound-btn" type="button" aria-pressed="true">
+          <span class="sound-btn__icon" aria-hidden="true">🔊</span><span class="sound-btn__label">Sound on</span>
+        </button>
+      </div>
+
+      <div class="gate" id="gate">
+        <p class="gate__kicker">A tiny film for Chooty Bole</p>
+        <h1 class="gate__title">Piggy’s Netball Mission</h1>
+        <button class="gate__btn" id="gate-btn" type="button">
+          <span class="gate__play" aria-hidden="true"></span><span id="gate-label">Tap to begin</span>
+        </button>
+        <p class="gate__note" id="gate-note">Sound on 🔊 · about 2 minutes</p>
+      </div>
+
+      <div class="end" id="end" hidden>
+        <button class="end__btn" id="replay-btn" type="button">↺ <span id="replay-label">Watch again</span></button>
+      </div>
+    </main>
+  </div>
+  <noscript><p class="noscript">This little film needs JavaScript. The pig insists. 🐷</p></noscript>
+</body>
+</html>
