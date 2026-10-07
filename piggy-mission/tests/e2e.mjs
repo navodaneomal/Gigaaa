@@ -153,7 +153,9 @@ async function layout() {
     ['laptop', { width: 1280, height: 800 }, false],
     ['desktop', { width: 1440, height: 900 }, false],
   ];
-  for (const [name, viewport, touch] of sizes) {
+  // SIZES="iPhone SE,laptop" limits the sweep to those names
+  const pick = process.env.SIZES ? process.env.SIZES.split(',').map((x) => x.trim().toLowerCase()) : null;
+  for (const [name, viewport, touch] of sizes.filter(([n]) => !pick || pick.includes(n.toLowerCase()))) {
     const ctx = await browser.newContext({ viewport, hasTouch: touch, isMobile: touch && viewport.width < 900, deviceScaleFactor: 1 });
     const page = await ctx.newPage();
     const errors = watch(page);
