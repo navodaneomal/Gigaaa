@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>The Referee’s Final Call — Chooty Bole</title>
+  <meta name="description" content="One final match before the real competition begins." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#0d1526" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/inter.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="src/styles.css" />
+  <script>
+    // Apply the saved theme before first paint to avoid a flash.
+    try {
+      var t = localStorage.getItem('rfc.theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+    // Opened straight from disk? Browsers block font files on file://, so use the embedded copy.
+    if (location.protocol === 'file:') {
+      var l = document.createElement('link');
+      l.rel = 'stylesheet';
+      l.href = 'assets/fonts/fonts-inline.css';
+      document.head.appendChild(l);
+    }
+  </script>
+  <script defer src="data/letter.js"></script>
+  <script defer src="src/config.js"></script>
+  <script defer src="src/audio.js"></script>
+  <script defer src="src/fx.js"></script>
+  <script defer src="src/puzzles.js"></script>
+  <script defer src="src/game.js"></script>
+  <script defer src="src/letter.js"></script>
+  <script defer src="src/main.js"></script>
+</head>
+<body>
+  <!-- Icon sprite -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-whistle" viewBox="0 0 48 48">
+      <g fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M18 19H42V26H28.2A11 11 0 1 1 18 19Z" />
+        <circle cx="18" cy="30" r="4" />
+        <path d="M33 19v-3.2h5V19" />
+        <path d="M10.2 22.2 6.4 18.4" />
+        <circle cx="4.9" cy="16.9" r="2.1" />
+      </g>
+    </symbol>
+    <symbol id="i-sound" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" />
+        <path d="M15.5 9a4.2 4.2 0 0 1 0 6" />
+        <path d="M18 6.5a7.6 7.6 0 0 1 0 11" />
+      </g>
+    </symbol>
+    <symbol id="i-mute" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" />
+        <path d="m16 9.5 5 5M21 9.5l-5 5" />
+      </g>
+    </symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" />
+      </g>
+    </symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24">
+      <path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M19.5 14.6A8 8 0 0 1 9.4 4.5a8 8 0 1 0 10.1 10.1Z" />
+    </symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24">
+      <g fill="currentColor"><rect x="6.5" y="5" width="3.6" height="14" rx="1" /><rect x="13.9" y="5" width="3.6" height="14" rx="1" /></g>
+    </symbol>
+    <symbol id="i-ball" viewBox="0 0 24 24">
+      <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+        <circle cx="12" cy="12" r="9.5" />
+        <path d="M3.2 9.2c3.6 1.2 7.6 1.1 11.3-.6 2-.9 4-2.2 5.3-3.6" />
+        <path d="M5.2 18.8c2.7-2.6 6.4-4 10.3-4 1.9 0 3.6.3 5.3.9" />
+        <path d="M11 2.6c-1.5 3.1-1.4 6.6.1 9.7 1.2 2.6 1.4 6.2.2 9.1" />
+      </g>
+    </symbol>
+    <symbol id="i-badge" viewBox="0 0 64 72">
+      <path d="M32 3 58 11.5V35c0 16.2-11.4 27.6-26 33C17.4 62.6 6 51.2 6 35V11.5Z" fill="currentColor" />
+      <path d="M32 9.5 52.5 16.2V35c0 12.7-8.6 22.1-20.5 27-11.9-4.9-20.5-14.3-20.5-27V16.2Z" fill="none" stroke="var(--badge-ink, #f6efe2)" stroke-width="1.6" opacity=".7" />
+      <path d="m32 17 3.3 6.8 7.5 1.1-5.4 5.3 1.3 7.4L32 34.1l-6.7 3.5 1.3-7.4-5.4-5.3 7.5-1.1Z" fill="var(--badge-ink, #f6efe2)" />
+      <text x="32" y="52" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="8.5" letter-spacing="1.6" fill="var(--badge-ink, #f6efe2)">REFEREE</text>
+    </symbol>
+    <symbol id="i-trophy" viewBox="0 0 64 64">
+      <g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">
+        <path d="M19 8h26v12c0 9.4-5.8 17-13 17s-13-7.6-13-17Z" fill="currentColor" fill-opacity=".18" />
+        <path d="M19 12h-7c0 7.5 3.6 12.4 9.2 13.4M45 12h7c0 7.5-3.6 12.4-9.2 13.4" />
+        <path d="M32 37v9M24 56h16l-2-10H26Z" />
+        <path d="M20 56h24" />
+        <path d="m32 14 1.9 3.8 4.2.6-3 3 .7 4.1-3.8-2-3.8 2 .7-4.1-3-3 4.2-.6Z" fill="currentColor" stroke="none" />
+      </g>
+    </symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24">
+      <path d="M13.5 2 5 13.5h6L10 22l9-12.5h-6.2Z" fill="currentColor" />
+    </symbol>
+    <symbol id="i-up" viewBox="0 0 24 24">
+      <path d="M12 4 4 13h5v7h6v-7h5Z" fill="currentColor" />
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path d="M5 12h13m-5-5 5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+    </symbol>
+  </svg>
+
+  <div class="app" id="app">
+    <!-- Top bar -->
+    <header class="topbar" id="topbar">
+      <button class="icon-btn whistle-btn" id="whistle-btn" type="button" aria-label="The referee's whistle">
+        <svg class="icon" aria-hidden="true"><use href="#i-whistle" /></svg>
+      </button>
+      <div class="topbar__title" aria-hidden="true">The Final Call</div>
+      <ol class="stages" id="stages" aria-label="Match progress">
+        <li data-stage="check"><span class="sr-only">Referee check</span></li>
+        <li data-stage="run"><span class="sr-only">Four-day run</span></li>
+        <li data-stage="match"><span class="sr-only">Final match</span></li>
+        <li data-stage="report"><span class="sr-only">Referee report</span></li>
+        <li data-stage="letter" class="stages__secret"><span class="sr-only">Something else</span></li>
+      </ol>
+      <div class="topbar__actions">
+        <button class="icon-btn" id="mute-btn" type="button" aria-pressed="false" aria-label="Mute sound">
+          <svg class="icon icon--sound" aria-hidden="true"><use href="#i-sound" /></svg>
+          <svg class="icon icon--mute" aria-hidden="true"><use href="#i-mute" /></svg>
+        </button>
+        <button class="icon-btn" id="theme-btn" type="button" aria-label="Switch to dark mode">
+          <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon" /></svg>
+          <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun" /></svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="stage-root" id="stage-root">
+      <!-- 0 · Gate: loading + first interaction (unlocks audio) -->
+      <section class="scene scene--dark scene--gate is-active" data-scene="gate" aria-labelledby="gate-title">
+        <svg class="court-sketch" viewBox="0 0 200 360" aria-hidden="true" focusable="false">
+          <rect x="10" y="10" width="180" height="340" rx="1" pathLength="1" />
+          <line x1="10" y1="123.3" x2="190" y2="123.3" pathLength="1" />
+          <line x1="10" y1="236.7" x2="190" y2="236.7" pathLength="1" />
+          <circle cx="100" cy="180" r="6" pathLength="1" />
+          <path d="M42 10A58 58 0 0 0 158 10" pathLength="1" />
+          <path d="M42 350A58 58 0 0 1 158 350" pathLength="1" />
+        </svg>
+        <div class="gate">
+          <h1 class="sr-only" id="gate-title">The Referee’s Final Call</h1>
+          <p class="gate__loading" id="gate-loading" role="status">Preparing the court<span class="dots" aria-hidden="true"><i>.</i><i>.</i><i>.</i></span></p>
+          <div class="gate__ready" id="gate-ready" hidden>
+            <button class="gate__start" id="gate-start" type="button">
+              <span class="gate__ring" aria-hidden="true"><svg class="icon"><use href="#i-whistle" /></svg></span>
+              <span class="gate__label">Tap to begin</span>
+            </button>
+            <p class="gate__note">Sound on, if you can. There’s a mute button up top.</p>
+            <div class="gate__resume" id="gate-resume" hidden>
+              <p class="gate__welcome">Welcome back. The referee remembers where you left off: <strong id="resume-label">the match</strong>.</p>
+              <button class="btn-link" id="restart-btn" type="button">Start again from the first whistle</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 1 · Official match notice -->
+      <section class="scene scene--dark scene--intro" data-scene="intro" aria-labelledby="intro-title" hidden>
+        <div class="lights" aria-hidden="true"><span></span><span></span></div>
+        <div class="notice">
+          <p class="eyebrow eyebrow--gold reveal" data-step>Issued by the referee</p>
+          <h1 class="notice__title reveal" id="intro-title" data-step tabindex="-1">Official Match Notice</h1>
+          <dl class="notice__list">
+            <div class="notice__row reveal" data-step><dt>Player</dt><dd>Chooty Bole</dd></div>
+            <div class="notice__row reveal" data-step><dt>Referee</dt><dd>Matta (Gon Satha)</dd></div>
+            <div class="notice__row reveal" data-step><dt>Match</dt><dd>One Very Important Final Challenge</dd></div>
+            <div class="notice__row reveal" data-step><dt>Venue</dt><dd>Somewhere between here and your dreams</dd></div>
+            <div class="notice__row reveal" data-step><dt>Objective</dt><dd>Prove the referee wrong.</dd></div>
+          </dl>
+          <p class="notice__line reveal" data-step>“Before you go and terrorise that netball court for the next four days… there is one tiny problem.”</p>
+          <button class="btn btn--gold reveal" id="enter-court" type="button" data-step>Enter the court</button>
+        </div>
+      </section>
+
+      <!-- 2 · Referee's welcome -->
+      <section class="scene scene--paper" data-scene="welcome" aria-labelledby="welcome-title" hidden>
+        <div class="scene__inner">
+          <article class="card briefing">
+            <button class="badge-btn" id="ref-badge" type="button" aria-label="Referee badge">
+              <svg aria-hidden="true"><use href="#i-badge" /></svg>
+            </button>
+            <p class="eyebrow">Pre-match briefing</p>
+            <h2 class="display" id="welcome-title" tabindex="-1">Hello, Chooty Bole.</h2>
+            <p>I’m your referee for today. Yes, me. Please hold your applause.</p>
+            <p>Here’s the tiny problem: nobody leaves for four days of All-Island Netball without being <em>officially cleared</em> by the referee. Rules are rules. (I wrote them this morning.)</p>
+            <ol class="briefing__list">
+              <li><span class="briefing__num">01</span><span><strong>Referee Check</strong><small>Prove you are who I think you are.</small></span></li>
+              <li><span class="briefing__num">02</span><span><strong>The Four-Day Run</strong><small>Prove you can pace yourself.</small></span></li>
+              <li><span class="briefing__num">03</span><span><strong>The Final Match</strong><small>Prove the referee wrong.</small></span></li>
+            </ol>
+            <p class="hand">Take your time. The referee is extremely patient. (Lies.)</p>
+            <button class="btn" id="begin-check" type="button">Begin the check <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg></button>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3 · Puzzle one: Referee Check -->
+      <section class="scene scene--paper" data-scene="check" aria-labelledby="check-title" hidden>
+        <div class="scene__inner scene__inner--wide" id="check-root"></div>
+      </section>
+
+      <!-- 4 · Puzzle two: The Four-Day Run -->
+      <section class="scene scene--paper" data-scene="run" aria-labelledby="run-title" hidden>
+        <div class="scene__inner scene__inner--wide" id="run-root"></div>
+      </section>
+
+      <!-- 5 · The final match -->
+      <section class="scene scene--match" data-scene="match" aria-labelledby="match-title" hidden>
+        <h2 class="sr-only" id="match-title" tabindex="-1">The Final Match</h2>
+        <div class="match" id="match">
+          <div class="scoreboard" id="scoreboard" role="group" aria-label="Scoreboard">
+            <div class="sb-team">
+              <span class="sb-name">Chooty Bole</span>
+              <span class="sb-score" id="sb-home" aria-label="Chooty Bole score">00</span>
+            </div>
+            <div class="sb-mid">
+              <span class="sb-clock" id="sb-clock" aria-label="Time remaining">1:30</span>
+              <span class="sb-period" id="sb-period">Final match</span>
+            </div>
+            <div class="sb-team sb-team--away">
+              <span class="sb-score" id="sb-away" aria-label="Referee's team score">00</span>
+              <span class="sb-name">Referee’s Team</span>
+            </div>
+          </div>
+
+          <div class="court-wrap" id="court-wrap">
+            <canvas id="court" aria-label="Netball court. Chooty Bole wears GS; the referee's defender wears GD." role="img"></canvas>
+            <div class="commentary" id="commentary" aria-live="polite" aria-atomic="true"></div>
+            <p class="game-hint" id="game-hint" aria-live="polite"></p>
+            <button class="icon-btn pause-btn" id="pause-btn" type="button" aria-label="Time-out (pause)">
+              <svg class="icon" aria-hidden="true"><use href="#i-pause" /></svg>
+            </button>
+
+            <!-- Pre-match -->
+            <div class="overlay" id="ov-ready" role="dialog" aria-modal="false" aria-labelledby="ov-ready-title">
+              <div class="overlay__card">
+                <p class="eyebrow eyebrow--gold">Stage 03</p>
+                <h3 class="display" id="ov-ready-title">The Final Match</h3>
+                <p class="overlay__goal">Score <strong id="ready-target">5</strong> goals before the clock runs out.</p>
+                <ol class="howto">
+                  <li><span class="howto__key">Move</span><span>Lose your defender. <span class="only-touch">Use the pad on the left.</span><span class="only-fine">WASD or arrow keys.</span></span></li>
+                  <li><span class="howto__key">Pass</span><span>Call for the ball when you’re free. No running with it. Netball rules.</span></li>
+                  <li><span class="howto__key">Shoot</span><span>Inside the circle, <strong>hold</strong> <span class="only-fine">Space or </span>SHOOT and let go in the green.</span></li>
+                </ol>
+                <button class="btn btn--gold" id="start-match" type="button">Start the match</button>
+              </div>
+            </div>
+
+            <!-- Pause -->
+            <div class="overlay" id="ov-pause" role="dialog" aria-modal="false" aria-labelledby="ov-pause-title" hidden>
+              <div class="overlay__card">
+                <p class="eyebrow eyebrow--gold">Time-out</p>
+                <h3 class="display" id="ov-pause-title">The referee has stopped the clock.</h3>
+                <div class="overlay__actions">
+                  <button class="btn btn--gold" id="resume-match" type="button">Resume</button>
+                  <button class="btn btn--ghost" id="restart-match" type="button">Restart match</button>
+                  <button class="btn-link" id="mercy-btn" type="button">Ask the referee for mercy (skip the match)</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Time up -->
+            <div class="overlay" id="ov-timeup" role="dialog" aria-modal="false" aria-labelledby="ov-timeup-title" hidden>
+              <div class="overlay__card">
+                <p class="eyebrow eyebrow--gold">Time!</p>
+                <h3 class="display" id="ov-timeup-title">…actually, no.</h3>
+                <p>The referee has decided this match needs <strong>extra time</strong>. Don’t ask why. The ring has also been told to behave.</p>
+                <div class="overlay__actions">
+                  <button class="btn btn--gold" id="extra-time" type="button">Play extra time</button>
+                  <button class="btn-link" id="mercy-btn-2" type="button">Ask the referee for mercy (skip the match)</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Victory -->
+            <div class="overlay overlay--victory" id="ov-victory" role="dialog" aria-modal="false" aria-labelledby="v-title" hidden>
+              <div class="victory">
+                <p class="victory__whistle" id="v-title" tabindex="-1">Final Whistle</p>
+                <p class="victory__complete" data-v>Match complete</p>
+                <div class="victory__board" data-v role="group" aria-label="Final score">
+                  <div class="vb-row"><span>Chooty Bole</span><b id="v-home">00</b></div>
+                  <div class="vb-row"><span>Referee’s Team</span><b id="v-away">00</b></div>
+                  <p class="vb-note" id="v-note" hidden></p>
+                </div>
+                <p class="victory__winner" data-v>Winner: <span>Chooty Bole</span></p>
+                <button class="trophy-btn" id="trophy" type="button" data-v aria-label="The trophy. Press and hold.">
+                  <svg aria-hidden="true"><use href="#i-trophy" /></svg>
+                  <span class="trophy-btn__fill" aria-hidden="true"></span>
+                </button>
+                <p class="victory__complain" data-v>“As the referee, I am legally required to complain about this result.”</p>
+                <button class="btn btn--gold" id="view-report" type="button" data-v>View official referee report</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="controls" id="controls">
+            <div class="joystick" id="joystick" aria-hidden="true">
+              <div class="joy-base"><div class="joy-knob"></div></div>
+              <span class="joy-label">Move</span>
+            </div>
+            <div class="keys-hint" aria-hidden="true">
+              <p><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> / arrows: move</p>
+              <p><kbd>E</kbd> or <kbd>K</kbd>: pass</p>
+              <p>Hold <kbd>Space</kbd> or <kbd>J</kbd>: shoot</p>
+            </div>
+            <div class="action-btns">
+              <button class="act-btn act-btn--pass" id="btn-pass" type="button" aria-label="Pass. Call for the ball, or pass it back.">Pass</button>
+              <button class="act-btn act-btn--shoot" id="btn-shoot" type="button" aria-label="Shoot. Press and hold, then release.">
+                <span class="act-btn__meter" aria-hidden="true"></span>
+                <span class="act-btn__label">Shoot</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6 · Confidential referee report -->
+      <section class="scene scene--desk" data-scene="report" aria-labelledby="report-title" hidden>
+        <div class="scene__inner">
+          <article class="report" id="report">
+            <div class="report__stamp" aria-hidden="true">Confidential</div>
+            <header class="report__head">
+              <svg class="report__badge" aria-hidden="true"><use href="#i-badge" /></svg>
+              <div>
+                <p class="report__ref">Ref. RFC/AIN/04 · Filed before the first whistle</p>
+                <h2 class="report__title" id="report-title" tabindex="-1">Confidential Referee Report</h2>
+              </div>
+            </header>
+            <dl class="report__fields">
+              <div><dt>Player</dt><dd>Chooty Bole</dd></div>
+              <div><dt>Referee</dt><dd>Matta (Gon Satha)</dd></div>
+              <div><dt>Competition</dt><dd>All-Island Netball</dd></div>
+              <div><dt>Duration</dt><dd>4 Days</dd></div>
+              <div><dt>Final match</dt><dd><span id="report-score">05 – 03</span> <small>(under protest)</small></dd></div>
+              <div><dt>Status</dt><dd class="report__ready">Ready.</dd></div>
+            </dl>
+            <h3 class="report__sub">Observations</h3>
+            <ul class="report__obs" id="report-obs">
+              <li data-obs><b>Strength:</b> <span data-text="Remarkably high."></span></li>
+              <li data-obs><b>Determination:</b> <span data-text="Slightly concerning."></span></li>
+              <li data-obs><b>Ambition:</b> <span data-text="Absolutely refuses to sit still."></span></li>
+              <li data-obs><b>Courage:</b> <span data-text="Present."></span></li>
+              <li data-obs><b>Effort:</b> <span data-text="Impossible to ignore."></span></li>
+              <li data-obs><b>Competitive spirit:</b> <span data-text="Certified menace."></span></li>
+              <li data-obs><b>Beauty:</b> <span data-text="Referee cannot officially comment on this."></span></li>
+            </ul>
+            <p class="report__unofficial" id="report-unofficial">…but unofficially…</p>
+            <footer class="report__foot">
+              <span>Referee’s signature</span>
+              <span class="report__sig">Matta</span>
+              <small>(illegible, as is tradition)</small>
+            </footer>
+            <button class="btn" id="to-unofficial" type="button">Read the unofficial part <svg class="icon" aria-hidden="true"><use href="#i-arrow" /></svg></button>
+          </article>
+        </div>
+      </section>
+
+      <!-- 7 · oya mala anayak -->
+      <section class="scene scene--cream" data-scene="oya" aria-labelledby="oya-title" hidden>
+        <div class="oya">
+          <div class="oya__charm" aria-hidden="true">
+            <svg class="oya__whistle"><use href="#i-whistle" /></svg>
+          </div>
+          <h2 class="oya__title" id="oya-title" tabindex="-1">oya mala anayak <span class="emoji">😌🫂</span></h2>
+          <p class="oya__line" data-oya>“Hari hari… enough with the referee drama.”</p>
+          <p class="oya__line" data-oya>“You actually thought the prize was the game?”</p>
+          <svg class="oya__smile" data-oya viewBox="0 0 60 20" aria-hidden="true"><path d="M6 6c7 9 41 9 48 0" /></svg>
+          <p class="oya__line oya__line--nope" data-oya>“Nope.”</p>
+          <button class="btn" id="to-envelope" type="button" data-oya>Open the envelope</button>
+        </div>
+      </section>
+
+      <!-- 8 · Envelope -->
+      <section class="scene scene--cream" data-scene="envelope" aria-labelledby="env-title" hidden>
+        <div class="env-wrap">
+          <h2 class="sr-only" id="env-title" tabindex="-1">A sealed envelope</h2>
+          <button class="envelope" id="envelope" type="button" aria-label="Open the envelope">
+            <span class="envelope__back" aria-hidden="true"></span>
+            <span class="envelope__paper" aria-hidden="true">
+              <span class="envelope__paper-line"></span><span class="envelope__paper-line"></span><span class="envelope__paper-line"></span>
+            </span>
+            <span class="envelope__front" aria-hidden="true">
+              <span class="envelope__to">For Chooty Bole</span>
+              <span class="envelope__from">from the referee</span>
+            </span>
+            <span class="envelope__flap" aria-hidden="true"></span>
+            <span class="envelope__seal" aria-hidden="true"><svg><use href="#i-whistle" /></svg></span>
+          </button>
+          <p class="env-hint" id="env-hint">Tap the envelope to break the seal</p>
+        </div>
+      </section>
+
+      <!-- 9 · The letter -->
+      <section class="scene scene--letter" data-scene="letter" aria-labelledby="letter-title" hidden>
+        <div class="read-progress" aria-hidden="true"><span id="read-progress"></span></div>
+        <div class="letter-root" id="letter-root"></div>
+      </section>
+    </main>
+
+    <div class="wipe" id="wipe" aria-hidden="true">
+      <span class="wipe__stripe"></span>
+      <svg class="wipe__icon"><use href="#i-whistle" /></svg>
+    </div>
+    <canvas class="fx-canvas" id="fx-canvas" aria-hidden="true"></canvas>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="sr-only" id="announcer" aria-live="polite"></div>
+  </div>
+
+  <noscript>
+    <div class="noscript">
+      <p>This match needs JavaScript switched on. The referee insists.</p>
+    </div>
+  </noscript>
+</body>
+</html>

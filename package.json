@@ -1,0 +1,15 @@
+{
+  "name": "referees-final-call",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Referee's Final Call: a small interactive good-luck gift for Chooty Bole.",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node tests/e2e.mjs",
+    "fonts": "node scripts/embed-fonts.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "UNLICENSED"
+}
