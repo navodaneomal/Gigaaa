@@ -23,13 +23,13 @@
       // cinematic bars (slow motion) would cover the board: drop it just below the top bar
       '.stage.is-letterbox .mk-board{top:calc(10% + var(--u)*6)}',
       '.mk-board__title{padding:calc(var(--u)*3) calc(var(--u)*12);border-radius:calc(var(--u)*6) calc(var(--u)*6) 0 0;background:#e66f92;color:#fff;',
-      'font:italic 800 calc(var(--u)*13)/1.2 var(--font-sport);letter-spacing:.2em;text-transform:uppercase}',
+      'font:italic 800 max(11px,calc(var(--u)*13))/1.2 var(--font-sport);letter-spacing:.2em;text-transform:uppercase}',
       '.mk-board__row{display:flex;align-items:stretch;border-radius:calc(var(--u)*10);overflow:hidden;box-shadow:0 calc(var(--u)*10) calc(var(--u)*24) rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.15)}',
-      '.mk-team{display:flex;align-items:center;padding:0 calc(var(--u)*10);background:#1d2a66;color:#fff;font:800 calc(var(--u)*15)/1 var(--font-sport);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}',
+      '.mk-team{display:flex;align-items:center;padding:0 calc(var(--u)*10);background:#1d2a66;color:#fff;font:800 max(11px,calc(var(--u)*15))/1 var(--font-sport);letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}',
       '.mk-team--away{background:#2a5fd0}',
       '.mk-score{min-width:calc(var(--u)*34);display:grid;place-items:center;padding:calc(var(--u)*6) calc(var(--u)*4);background:#0b1020;color:#ffcf4d;font:800 calc(var(--u)*24)/1 var(--font-sport);font-variant-numeric:tabular-nums}',
       '.mk-score.is-pop{animation:mkPop .6s cubic-bezier(.2,1.6,.4,1)}',
-      '.mk-vs{display:grid;place-items:center;padding:0 calc(var(--u)*6);background:#0b1020;color:#9fb0e8;font:600 calc(var(--u)*12)/1 var(--font-sport);text-transform:uppercase}',
+      '.mk-vs{display:grid;place-items:center;padding:0 calc(var(--u)*6);background:#0b1020;color:#9fb0e8;font:600 max(11px,calc(var(--u)*12))/1 var(--font-sport);text-transform:uppercase}',
       '@keyframes mkPop{0%{transform:scale(1.8);color:#fff}100%{transform:none}}',
     ].join('')
   );

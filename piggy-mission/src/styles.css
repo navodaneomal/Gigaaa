@@ -267,7 +267,7 @@ button {
   background: rgba(8, 14, 34, 0.82);
   border: 1px solid rgba(95, 211, 179, 0.7);
   box-shadow: 0 0 calc(var(--u) * 18) rgba(95, 211, 179, 0.25);
-  font: 600 calc(var(--u) * 17) / 1.2 var(--font-sport);
+  font: 600 max(11px, calc(var(--u) * 17)) / 1.2 var(--font-sport);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #b9fbe8;
@@ -277,7 +277,7 @@ button {
   border-radius: 999px;
   background: var(--gold);
   color: var(--ink);
-  font: 800 calc(var(--u) * 15) / 1 var(--font-sport);
+  font: 800 max(11px, calc(var(--u) * 15)) / 1 var(--font-sport);
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -292,7 +292,7 @@ button {
   border-radius: calc(var(--u) * 16);
   background: #fff;
   color: var(--ink);
-  font: 900 calc(var(--u) * 17.5) / 1.2 var(--font);
+  font: 900 max(11px, calc(var(--u) * 17.5)) / 1.2 var(--font);
   text-align: center;
   box-shadow: 0 calc(var(--u) * 6) calc(var(--u) * 16) rgba(10, 10, 30, 0.28);
   opacity: 0;
@@ -363,7 +363,7 @@ button {
   top: calc(var(--u) * 70 + var(--safe-top));
 }
 .prompt__label {
-  font: 800 calc(var(--u) * 15) / 1 var(--font-sport);
+  font: 800 max(11px, calc(var(--u) * 15)) / 1 var(--font-sport);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #fff;
@@ -562,7 +562,7 @@ button {
 }
 .gate__kicker {
   margin: 0 0 6px;
-  font: 800 calc(var(--u) * 13) / 1 var(--font-sport);
+  font: 800 max(11px, calc(var(--u) * 13)) / 1 var(--font-sport);
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--pink);
