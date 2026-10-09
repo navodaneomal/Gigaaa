@@ -1,0 +1,371 @@
+/*
+ * THE SMALL THINGS: print design system.
+ * Page: 120 × 213 mm (a 9:16 field journal that also reads well on a phone).
+ * Type: EB Garamond (literary) · IBM Plex Sans Condensed (archival labels) · Caveat (marginalia).
+ */
+@font-face { font-family: 'EB Garamond'; src: url(../assets/fonts/eb-garamond-latin-400-normal.woff2) format('woff2'); font-weight: 400; font-style: normal; }
+@font-face { font-family: 'EB Garamond'; src: url(../assets/fonts/eb-garamond-latin-500-normal.woff2) format('woff2'); font-weight: 500; font-style: normal; }
+@font-face { font-family: 'EB Garamond'; src: url(../assets/fonts/eb-garamond-latin-600-normal.woff2) format('woff2'); font-weight: 600; font-style: normal; }
+@font-face { font-family: 'EB Garamond'; src: url(../assets/fonts/eb-garamond-latin-400-italic.woff2) format('woff2'); font-weight: 400; font-style: italic; }
+@font-face { font-family: 'EB Garamond'; src: url(../assets/fonts/eb-garamond-latin-500-italic.woff2) format('woff2'); font-weight: 500; font-style: italic; }
+@font-face { font-family: 'Plex Condensed'; src: url(../assets/fonts/ibm-plex-sans-condensed-latin-400-normal.woff2) format('woff2'); font-weight: 400; font-style: normal; }
+@font-face { font-family: 'Plex Condensed'; src: url(../assets/fonts/ibm-plex-sans-condensed-latin-400-italic.woff2) format('woff2'); font-weight: 400; font-style: italic; }
+@font-face { font-family: 'Plex Condensed'; src: url(../assets/fonts/ibm-plex-sans-condensed-latin-500-normal.woff2) format('woff2'); font-weight: 500; font-style: normal; }
+@font-face { font-family: 'Plex Condensed'; src: url(../assets/fonts/ibm-plex-sans-condensed-latin-600-normal.woff2) format('woff2'); font-weight: 600; font-style: normal; }
+@font-face { font-family: 'Caveat'; src: url(../assets/fonts/caveat-latin-500-normal.woff2) format('woff2'); font-weight: 500; font-style: normal; }
+
+:root {
+  --pw: 120mm;
+  --ph: 213mm;
+  --m-top: 17mm;
+  --m-bottom: 17mm;
+  --m-side: 11mm;
+
+  --ivory: #f7f1e3;
+  --parchment: #efe4cc;
+  --parchment-deep: #e6d7b8;
+  --ink: #2b2926;
+  --ink-soft: #57524a;
+  --ink-faint: #8a8174;
+  --brown: #7a5c43;
+  --brown-soft: #a08a72;
+  --navy: #1f2d4a;
+  --navy-soft: #3a4a6b;
+  --gold: #b08d4a;
+  --gold-soft: #cdb17a;
+  --stamp: #7d3b32;
+  --pen: #2c4372;
+  --rule: rgba(43, 41, 38, 0.28);
+  --rule-faint: rgba(43, 41, 38, 0.14);
+
+  --serif: 'EB Garamond', 'Garamond', Georgia, serif;
+  --sans: 'Plex Condensed', 'Arial Narrow', sans-serif;
+  --hand: 'Caveat', cursive;
+}
+
+@page { size: 120mm 213mm; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: #6d665c;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 11pt;
+  line-height: 1.47;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  text-rendering: geometricPrecision;
+}
+@media screen {
+  #pages { display: flex; flex-direction: column; align-items: center; gap: 8mm; padding: 8mm 0; }
+}
+#source { position: absolute; left: -9999px; top: 0; width: 98mm; visibility: hidden; }
+
+/* ---------------- the page ---------------- */
+.page {
+  position: relative;
+  width: var(--pw);
+  height: var(--ph);
+  overflow: hidden;
+  background-color: var(--ivory);
+  background-image: url(../assets/paper.jpg);
+  background-size: 150mm 150mm;
+  break-after: page;
+  page-break-after: always;
+}
+.page:last-child { break-after: auto; page-break-after: auto; }
+.page--parchment { background-color: var(--parchment); background-blend-mode: multiply; }
+.page--dark { background: var(--navy); color: #efe6d2; }
+
+.frame {
+  position: absolute;
+  left: var(--m-side);
+  right: var(--m-side);
+  top: var(--m-top);
+  bottom: var(--m-bottom);
+  overflow: hidden;
+}
+.page--center .frame { display: flex; flex-direction: column; justify-content: center; }
+
+/* running header & footer (archival furniture) */
+.run-head, .run-foot {
+  position: absolute;
+  left: var(--m-side);
+  right: var(--m-side);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--sans);
+  font-size: 6.4pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.run-head { top: 8.5mm; padding-bottom: 1.6mm; border-bottom: 0.4pt solid var(--rule-faint); }
+.run-foot { bottom: 7mm; }
+.run-foot .folio { color: var(--ink-soft); }
+.run-foot .folio b { font-weight: 600; color: var(--navy); letter-spacing: 0.08em; }
+.ruler {
+  position: absolute;
+  left: var(--m-side);
+  right: var(--m-side);
+  bottom: 12.4mm;
+  height: 2.2mm;
+  background-image:
+    linear-gradient(to right, var(--rule) 0.35pt, transparent 0.35pt),
+    linear-gradient(to right, var(--rule-faint) 0.3pt, transparent 0.3pt);
+  background-size: 10mm 2.2mm, 2mm 1.1mm;
+  background-repeat: repeat-x;
+  background-position: 0 0, 0 0;
+  border-top: 0.35pt solid var(--rule-faint);
+  opacity: 0.8;
+}
+.page--dark .run-head, .page--dark .run-foot { color: rgba(239, 230, 210, 0.55); border-color: rgba(239, 230, 210, 0.15); }
+.page--bare .run-head, .page--bare .run-foot, .page--bare .ruler { display: none; }
+
+/* ---------------- type ---------------- */
+p { margin: 0; text-wrap: pretty; hyphens: manual; orphans: 2; widows: 2; }
+.flow p + p { text-indent: 1.15em; }
+.flow p.cont, .pull p, .fieldnote p { text-indent: 0 !important; }
+.flow p.first::first-letter {
+  float: left;
+  font-size: 3.35em;
+  line-height: 0.82;
+  padding: 0.06em 0.07em 0 0;
+  margin-top: 0.02em;
+  color: var(--navy);
+  font-weight: 500;
+}
+em { font-style: italic; }
+s.x {
+  text-decoration: line-through;
+  text-decoration-color: var(--stamp);
+  text-decoration-thickness: 1pt;
+  color: var(--ink-faint);
+}
+.prose { hyphens: manual; }
+.flow > * + * { margin-top: 0; }
+.gap-s { height: 2.6mm; }
+.gap-m { height: 5mm; }
+.gap-l { height: 9mm; }
+
+/* section opener */
+.sec { padding-top: 1mm; margin-bottom: 4.6mm; }
+.sec__kicker {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--sans);
+  font-size: 6.8pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brown);
+}
+.sec__kicker .no { color: var(--navy); font-weight: 600; }
+.sec__title {
+  margin: 2.2mm 0 2.6mm;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-style: italic;
+  font-size: 19pt;
+  line-height: 1.08;
+  color: var(--navy);
+  letter-spacing: -0.005em;
+}
+.sec__rule {
+  height: 2.4mm;
+  border-top: 0.6pt solid var(--navy);
+  background-image: linear-gradient(to right, var(--navy) 0.5pt, transparent 0.5pt);
+  background-size: 7mm 1.4mm;
+  background-repeat: repeat-x;
+  opacity: 0.75;
+}
+.sec--quiet .sec__title { font-size: 16pt; }
+.sec--inline { margin-top: 9mm; padding-top: 5mm; border-top: 0.5pt solid var(--rule-faint); }
+
+/* small label style */
+.label {
+  font-family: var(--sans);
+  font-size: 6.6pt;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brown);
+}
+
+/* ---------------- field note card ---------------- */
+.fieldnote {
+  position: relative;
+  margin: 4.4mm 0 4.6mm;
+  padding: 2.8mm 3.4mm 3mm 4.2mm;
+  background: rgba(239, 228, 204, 0.62);
+  border: 0.5pt solid rgba(122, 92, 67, 0.4);
+  border-left: 1.6pt solid var(--navy);
+}
+.fieldnote__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: var(--sans);
+  font-size: 6.6pt;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 1.4mm;
+}
+.fieldnote__head b { font-weight: 600; }
+.fieldnote__head span { color: var(--ink-faint); letter-spacing: 0.1em; }
+.fieldnote__obs { font-style: italic; font-size: 10.6pt; line-height: 1.38; }
+.fieldnote__con { margin-top: 1.6mm; font-size: 10.4pt; line-height: 1.38; }
+.fieldnote__con .label { display: block; margin-bottom: 0.4mm; font-size: 6.2pt; }
+.fieldnote.has-tick { padding-bottom: 6.6mm; }
+.fieldnote .tick {
+  position: absolute;
+  right: 3mm;
+  bottom: 2.4mm;
+  font-family: var(--sans);
+  font-size: 5.8pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stamp);
+  border: 0.8pt solid var(--stamp);
+  padding: 0.4mm 1.2mm 0.3mm;
+  transform: rotate(-4deg);
+  opacity: 0.78;
+}
+
+/* ---------------- marginalia (handwritten) ---------------- */
+.marginal {
+  position: relative;
+  margin: 1.4mm 0 2.4mm auto;
+  width: 68%;
+  padding-left: 9mm;
+  font-family: var(--hand);
+  font-weight: 500;
+  font-size: 13.2pt;
+  line-height: 1.02;
+  color: var(--pen);
+  transform: rotate(-1.6deg);
+  transform-origin: left top;
+}
+.marginal svg { position: absolute; left: 0; top: -1.2mm; width: 8mm; height: 6mm; overflow: visible; }
+.marginal--left { margin-left: 0; margin-right: auto; padding-left: 0; padding-right: 9mm; transform: rotate(1.2deg); }
+.marginal--left svg { left: auto; right: 0; transform: scaleX(-1); }
+
+/* ---------------- stamps ---------------- */
+.stamp {
+  display: inline-block;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 8pt;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--stamp);
+  border: 1.4pt solid var(--stamp);
+  outline: 0.5pt solid var(--stamp);
+  outline-offset: 0.7mm;
+  padding: 1mm 2.4mm 0.8mm;
+  transform: rotate(-6deg);
+  opacity: 0.74;
+  mix-blend-mode: multiply;
+}
+.stamp--navy { color: var(--navy); border-color: var(--navy); outline-color: var(--navy); }
+.stamp--abs { position: absolute; }
+
+/* ---------------- boxes & tables ---------------- */
+.box {
+  margin: 4mm 0;
+  padding: 3mm 3.6mm;
+  border: 0.5pt solid var(--rule);
+  background: rgba(255, 252, 244, 0.5);
+}
+.box__title { margin-bottom: 2mm; padding-bottom: 1.2mm; border-bottom: 0.4pt solid var(--rule); }
+.units dt { font-family: var(--sans); font-weight: 600; font-size: 7.6pt; letter-spacing: 0.06em; color: var(--navy); }
+.units dd { margin: 0.2mm 0 2mm; font-size: 10pt; line-height: 1.34; color: var(--ink-soft); }
+.units dd:last-child { margin-bottom: 0; }
+
+.form { width: 100%; border-collapse: collapse; }
+.form td { padding: 1.55mm 0; border-bottom: 0.4pt dotted rgba(43, 41, 38, 0.38); vertical-align: baseline; }
+.form td.k { width: 41%; padding-right: 2mm; font-family: var(--sans); font-size: 6.9pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brown); }
+.form td.v { font-style: italic; font-size: 10.6pt; line-height: 1.3; }
+.form tr:first-child td { border-top: 0.6pt solid var(--navy); }
+.redact { display: inline-block; background: var(--ink); color: transparent; width: 26mm; height: 0.95em; vertical-align: -0.12em; margin-right: 1.5mm; }
+.redact + small { font-family: var(--sans); font-style: normal; font-size: 6.4pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); }
+
+/* World Difference Index (dumbbell chart, 0–10 scale) */
+.wdi { margin-top: 3mm; }
+.wdi__legend { display: flex; gap: 5mm; margin-bottom: 2.4mm; font-family: var(--sans); font-size: 6.6pt; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+.wdi__legend i { display: inline-block; width: 2.3mm; height: 2.3mm; border-radius: 50%; margin-right: 1.3mm; vertical-align: -0.2mm; }
+.wdi__legend .b { border: 1.1pt solid var(--brown); background: var(--ivory); }
+.wdi__legend .a { background: var(--navy); }
+.wdi__row { padding: 1.9mm 0 2mm; border-top: 0.4pt solid var(--rule-faint); }
+.wdi__row:last-child { border-bottom: 0.4pt solid var(--rule-faint); }
+.wdi__item { display: flex; justify-content: space-between; align-items: baseline; gap: 2mm; }
+.wdi__item b { font-weight: 500; font-size: 10.4pt; }
+.wdi__item span { font-family: var(--sans); font-size: 7pt; letter-spacing: 0.04em; color: var(--ink-soft); white-space: nowrap; }
+.wdi__item span em { font-family: var(--serif); font-size: 9.6pt; letter-spacing: 0; color: var(--navy); }
+.wdi svg { display: block; width: 100%; height: 6.4mm; overflow: visible; margin-top: 0.8mm; }
+.wdi__note { margin-top: 0.6mm; font-size: 9.2pt; line-height: 1.3; font-style: italic; color: var(--ink-soft); }
+.wdi__axis { display: flex; justify-content: space-between; margin-top: 1.4mm; font-family: var(--sans); font-size: 6pt; color: var(--ink-faint); }
+
+/* numbered list (things you don't know you do) */
+.nlist { margin: 0; padding: 0; list-style: none; }
+.nlist li { display: grid; grid-template-columns: 8.5mm 1fr; padding: 1.5mm 0 1.6mm; border-top: 0.4pt solid var(--rule-faint); font-size: 10.6pt; line-height: 1.38; }
+.nlist li:first-child { border-top: 0.6pt solid var(--navy); }
+.nlist li .n { font-family: var(--sans); font-size: 7pt; letter-spacing: 0.08em; color: var(--gold); font-weight: 600; padding-top: 0.6mm; }
+
+/* experiment protocol */
+.proto__h { margin: 3.4mm 0 1.2mm; }
+.checks { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0.8mm 3mm; }
+.checks li { position: relative; padding-left: 4.6mm; font-size: 10pt; line-height: 1.3; }
+.checks li::before { content: ''; position: absolute; left: 0; top: 0.7mm; width: 2.4mm; height: 2.4mm; border: 0.6pt solid var(--ink-soft); }
+.checks li::after { content: ''; position: absolute; left: 0.75mm; top: 0.55mm; width: 0.9mm; height: 1.8mm; border-right: 1pt solid var(--pen); border-bottom: 1pt solid var(--pen); transform: rotate(40deg); }
+
+/* abandoned measurements */
+.abandon { margin: 0; padding: 0; list-style: none; }
+.abandon li { position: relative; display: grid; grid-template-columns: 1fr auto; gap: 3mm; align-items: baseline; padding: 1.15mm 0; border-bottom: 0.4pt dotted rgba(43, 41, 38, 0.35); font-size: 10.3pt; line-height: 1.3; }
+.abandon li .val { font-family: var(--sans); font-size: 7.2pt; color: var(--ink-faint); text-decoration: line-through; text-decoration-color: var(--stamp); text-decoration-thickness: 0.9pt; white-space: nowrap; }
+.result { margin-top: 4mm; padding: 2.6mm 3.2mm; border: 0.6pt solid var(--navy); font-family: var(--sans); font-size: 8.4pt; letter-spacing: 0.04em; color: var(--navy); }
+.result b { letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; margin-right: 1.6mm; }
+
+/* figures */
+.fig { margin: 4mm 0 4.4mm; }
+.fig svg { display: block; width: 100%; overflow: visible; }
+.fig figcaption { margin-top: 1.4mm; font-family: var(--sans); font-size: 6.6pt; letter-spacing: 0.08em; color: var(--ink-faint); text-transform: uppercase; }
+.fig figcaption b { color: var(--navy); font-weight: 600; margin-right: 1mm; }
+
+/* distortion table */
+.ba { width: 100%; border-collapse: collapse; margin: 1mm 0 2mm; }
+.ba th { padding: 0 0 1.4mm; text-align: left; font-family: var(--sans); font-weight: 500; font-size: 6.4pt; letter-spacing: 0.15em; text-transform: uppercase; color: var(--brown); border-bottom: 0.6pt solid var(--navy); }
+.ba th:last-child { color: var(--navy); padding-left: 3mm; }
+.ba td { padding: 1.7mm 0; vertical-align: top; font-size: 10.4pt; line-height: 1.32; border-bottom: 0.4pt solid var(--rule-faint); }
+.ba td:first-child { width: 42%; color: var(--ink-faint); padding-right: 2mm; }
+.ba td:last-child { padding-left: 3mm; border-left: 0.4pt solid var(--rule-faint); font-style: italic; }
+
+/* full-page quotation */
+.pull { padding: 0 2mm; }
+.pull blockquote { margin: 0; font-style: italic; font-size: 19pt; line-height: 1.24; color: var(--navy); text-wrap: balance; }
+.pull blockquote p + p { margin-top: 4mm; }
+.pull .src { margin-top: 6mm; }
+.pull .mark { font-size: 46pt; line-height: 0.5; color: var(--gold); font-style: normal; display: block; margin-bottom: 2mm; }
+
+/* poem */
+.poem-sec { padding-left: 4mm; }
+.poem-sec .stanza { font-size: 11pt; line-height: 1.42; margin-bottom: 3.2mm; white-space: pre-line; }
+.poem-sec .stanza:last-child { margin-bottom: 0; }
+.poem-head { margin-bottom: 4.6mm; }
+.poem-head .num { font-family: var(--sans); font-weight: 600; font-size: 7.2pt; letter-spacing: 0.2em; color: var(--gold); }
+.poem-head .h { margin-top: 1.4mm; font-style: italic; font-size: 15pt; color: var(--navy); }
+
+/* utilities */
+.center { text-align: center; }
+.navy { color: var(--navy); }
+.muted { color: var(--ink-soft); }
+.faint { color: var(--ink-faint); }
+.sans { font-family: var(--sans); }
+.hand { font-family: var(--hand); color: var(--pen); }
+.caps { text-transform: uppercase; letter-spacing: 0.16em; }
+.hr { height: 0; border-top: 0.5pt solid var(--rule); margin: 4mm 0; }
+.hr--gold { border-top: 0.6pt solid var(--gold); }
+.ornament { text-align: center; color: var(--gold); letter-spacing: 0.6em; font-size: 9pt; margin: 4mm 0; }
+.keep { break-inside: avoid; }

@@ -1,0 +1,81 @@
+/* Fixed pages: cover, routing slip, contents, pull quotes, report, appendix, ending, final page. */
+
+/* ---------- cover ---------- */
+.page--cover { background-color: var(--parchment); background-blend-mode: multiply; }
+.cover { position: absolute; inset: 0; padding: 11mm 11mm 0; }
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 5.5mm;
+  border: 0.6pt solid rgba(176, 141, 74, 0.75);
+  outline: 0.35pt solid rgba(176, 141, 74, 0.45);
+  outline-offset: -1.6mm;
+  pointer-events: none;
+}
+.cover__top { display: flex; justify-content: space-between; font-family: var(--sans); font-size: 6.4pt; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brown); padding: 0 1mm; }
+.cover__map { margin: 9mm -2mm 0; opacity: 0.9; }
+.cover__map svg { width: 100%; display: block; }
+.cover__title { margin-top: 2mm; text-align: center; }
+.cover__kicker { font-family: var(--sans); font-size: 7pt; letter-spacing: 0.32em; text-transform: uppercase; color: var(--brown); }
+.cover h1 { margin: 3mm 0 0; font-weight: 500; font-size: 29pt; line-height: 1; letter-spacing: 0.1em; text-transform: uppercase; color: var(--navy); }
+.cover__rule { width: 22mm; margin: 4.4mm auto 4mm; border-top: 0.8pt solid var(--gold); }
+.cover__sub { margin: 0 auto; max-width: 84mm; font-style: italic; font-size: 11.6pt; line-height: 1.36; color: var(--ink); text-wrap: balance; }
+.cover__form { position: absolute; left: 13mm; bottom: 26mm; width: calc(var(--pw) - 26mm); }
+.cover__form td.k { width: 34%; }
+.cover__stamp { right: 12mm; bottom: 30mm; transform: rotate(-9deg); font-size: 9pt; }
+.cover__foot { position: absolute; left: 13mm; right: 13mm; bottom: 15.5mm; display: flex; justify-content: space-between; font-family: var(--sans); font-size: 6pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
+.cover .ruler { left: 13mm; right: 13mm; bottom: 11.5mm; }
+
+/* ---------- routing slip ---------- */
+.page--routing .frame { display: flex; flex-direction: column; justify-content: center; }
+.slip { position: relative; padding: 5mm 4.6mm 6mm; background: rgba(255, 252, 244, 0.72); border: 0.6pt solid var(--rule); box-shadow: 0 0.6mm 0 rgba(43, 41, 38, 0.06); transform: rotate(-0.6deg); }
+.slip::before { content: ''; position: absolute; left: 50%; top: -3.2mm; width: 18mm; height: 6mm; transform: translateX(-50%) rotate(2deg); background: rgba(205, 177, 122, 0.45); border: 0.3pt solid rgba(176, 141, 74, 0.5); }
+.slip__head { display: flex; justify-content: space-between; padding-bottom: 2mm; margin-bottom: 1mm; }
+.slip__form td.k { width: 27%; }
+.slip__name { font-style: normal !important; font-weight: 500; font-size: 13pt !important; color: var(--navy); letter-spacing: 0.01em; }
+.slip__note { margin-top: 5mm; font-family: var(--hand); font-weight: 500; font-size: 13.4pt; line-height: 1.06; color: var(--pen); transform: rotate(-1.2deg); }
+.slip__stamp { right: 5mm; bottom: 4mm; transform: rotate(-7deg); }
+
+/* ---------- contents ---------- */
+.toc { list-style: none; margin: 4mm 0 0; padding: 0; }
+.toc li { display: grid; grid-template-columns: 11mm auto 1fr auto; align-items: baseline; gap: 1.2mm; padding: 1.25mm 0; font-size: 10.6pt; line-height: 1.25; }
+.toc__no { font-family: var(--sans); font-size: 7pt; letter-spacing: 0.06em; color: var(--gold); font-weight: 600; }
+.toc__t { max-width: 66mm; }
+.toc__dots { border-bottom: 0.6pt dotted rgba(43, 41, 38, 0.45); transform: translateY(-1mm); min-width: 3mm; }
+.toc__p { font-family: var(--sans); font-size: 7.6pt; color: var(--navy); font-variant-numeric: tabular-nums; }
+.toc__foot { margin-top: 6mm; font-size: 9pt; font-style: italic; }
+
+/* ---------- pull quotes ---------- */
+.page--pull .frame { padding: 0 3mm; }
+.page--pull .src { color: var(--brown); }
+
+/* ---------- report ---------- */
+.report td.k { width: 46%; }
+.report__foot { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 4mm; margin-top: 5mm; }
+.photo { flex: 0 0 30mm; height: 33mm; padding: 2.4mm; border: 0.6pt dashed var(--brown-soft); display: flex; flex-direction: column; justify-content: space-between; background: rgba(239, 228, 204, 0.45); }
+.photo p { font-style: italic; font-size: 9pt; line-height: 1.3; color: var(--ink-soft); }
+.report__foot .stamp { transform: rotate(-11deg); font-size: 8.6pt; }
+
+/* ---------- appendix / poem ---------- */
+.appx { text-align: center; padding: 0 3mm; }
+.appx__note { margin: 3mm auto 0; max-width: 76mm; font-style: italic; font-size: 10pt; line-height: 1.4; color: var(--ink-soft); }
+.appx .hr { width: 16mm; margin: 8mm auto; }
+.appx__title { margin: 0; font-weight: 400; font-style: italic; font-size: 21pt; line-height: 1.15; color: var(--navy); text-wrap: balance; }
+.appx__epi { margin: 6mm auto 0; max-width: 72mm; font-size: 9.8pt; line-height: 1.4; color: var(--ink-soft); }
+
+/* ---------- ending ---------- */
+.ending p { font-size: 11.2pt; line-height: 1.56; }
+.page--quietline .frame { padding: 0 4mm; }
+.final-line { margin: 0; padding-top: 6mm; border-top: 0.6pt solid var(--gold); font-style: italic; font-size: 14pt; line-height: 1.32; color: var(--navy); text-wrap: balance; }
+
+/* ---------- final page ---------- */
+.page--final .frame { display: flex; flex-direction: column; justify-content: center; }
+.final { position: relative; text-align: center; }
+.final__q { margin: 0; font-style: italic; font-size: 17pt; line-height: 1.34; color: var(--navy); text-wrap: balance; }
+.final__meta { margin: 0 auto; border-collapse: collapse; font-family: var(--sans); font-size: 7pt; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
+.final__meta td { padding: 0.7mm 1.6mm; }
+.final__meta td:first-child { text-align: right; color: var(--ink-faint); }
+.final__meta td:last-child { text-align: left; }
+.final__filed { margin-top: 9mm; font-size: 11pt; }
+.final__filed .label { color: var(--ink-faint); }
+.final__stamp { left: 50%; bottom: -24mm; transform: translateX(-50%) rotate(-7deg); }

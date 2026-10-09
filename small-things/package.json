@@ -1,0 +1,13 @@
+{
+  "name": "the-small-things",
+  "version": "1.0.0",
+  "private": true,
+  "description": "An Unofficial Field Study on the Slight Alterations Caused by One Particular Person: a letter + poem as a designed PDF.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/build.mjs --previews && python3 scripts/contact.py build/preview build/contact-sheet.png",
+    "package": "sh scripts/package.sh"
+  },
+  "engines": { "node": ">=18" },
+  "license": "UNLICENSED"
+}

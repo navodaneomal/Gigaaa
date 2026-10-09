@@ -1,0 +1,384 @@
+{
+ "disclaimer": "For the record: I do not normally write letters. I write findings.\n\nMy field is small atmospheric disturbances, the ways people alter the air around them without touching anything. Other cartographers measure coastlines and the distances between cities. I measure what happens in between: how much quieter a room becomes when somebody is properly listening; how far one stupid joke can carry a bad day; how laughter released at one end of a corridor reaches the other in roughly four seconds, losing volume but not effect. None of it appears on official maps. I have spent years putting it on unofficial ones, and for most of those years the instruments behaved.\n\nThen you entered the field of study, and the instruments began to misbehave.\n\nYour effects were not large. Large is easy; large has a scale. They were small, constant and impossible to reproduce. A sentence that should have registered as nothing turned up three weeks later, still glowing on the chart. My instruments read the world to two decimal places. You kept moving the decimal point.\n\nI recalibrated, twice. I briefly considered that the fault might lie with the observer, and filed that thought under *Unlikely*, without checking.\n\nWhat follows, then, is not a letter. It is a field study, compiled without a licence. The ~~data~~ evidence is incomplete. I have tried to keep it professional. Where I failed, I have left the failure in, because a cartographer who rubs out the coastline he cannot explain is no longer drawing a map. He is drawing a wish.\n\nPlease read it anyway. It is the only copy.",
+ "instruments": [
+  {
+   "unit": "The Hush (Hs)",
+   "definition": "The drop in a room’s noise when one person is genuinely listening rather than waiting for their turn. Calibrated against an empty library at three in the afternoon (1.0 Hs). Accurate to ±0.05 Hs under normal conditions."
+  },
+  {
+   "unit": "The Lift (Lf)",
+   "definition": "The improvement in a bad day produced by one stupid joke. 1 Lf = 3% less terrible. Readings above 10 Lf were considered theoretically impossible until they began occurring."
+  },
+  {
+   "unit": "Degrees Conversational (°C)",
+   "definition": "The emotional temperature of a conversation. Shares a symbol with Celsius, which has caused several misunderstandings and one ruined chart."
+  },
+  {
+   "unit": "The Afterglow Second (ag·s)",
+   "definition": "The length of time a sentence goes on warming the air after it has been said. Most remarks fade in under two. Certain sentences have kept the instrument running for months."
+  },
+  {
+   "unit": "The Landmark Coefficient (Lc)",
+   "definition": "The rate at which an ordinary place becomes a place you remember. Most corridors take years to reach 1 Lc. Some have managed it in a single afternoon."
+  }
+ ],
+ "talk_listen": "The first instrument to fail was the one pointed at the way you talk.\n\nYou announce that a story will be short. It is never short. You exaggerate with complete conviction: a slightly long queue becomes about a thousand people, a cool morning becomes the collapse of civilisation, and both are delivered with the gravity of the evening news. Then, mid-sentence and without signalling, your voice drops a register and you say something so plain and true that everyone else has to bank hard to keep up. There is no warning on the chart. The sea simply changes colour. My readings in Degrees Conversational do not look like a graph. They look like a coastline.\n\nCoastlines, at least, can be charted. It was the ~~auditory reception~~ listening that broke the equipment.\n\nMost people listen the way an aircraft waits on a runway: engines running, cleared for departure the moment you stop. You go still. Your eyes narrow slightly, as if the words had a weight you were trying to estimate. You ask a follow-up question that could only have come from someone who heard every word of the answer. People stop rehearsing in front of that expression. They say the actual thing. And weeks later you hand back the detail that was not supposed to matter, like something they had dropped in a corridor without noticing it was gone.\n\nBeside you, a corridor full of people between lessons registered 1.4 Hs: quieter, on paper, than an empty library. This is not physically possible. The corridor was very loud. The reading stands.",
+ "excitement_aliens": "When you are excited, the weather changes first. It reaches your hands before it reaches your sentences, and the words have to speed up to catch the hands. Your voice rises half a register. New sentences take off before the last ones have landed, and a conversation that had been cruising at a sensible altitude begins, without clearance, to climb.\n\nYou will not, however, admit to liking anything. Ask, and the answer comes back sideways: the *aliens* like it. The aliens think this song is very good. The aliens would like another one of those. The aliens hold firm opinions on almost everything you secretly enjoy.\n\nI have studied them at some length. Their taste is excellent. It matches yours to three decimal places. They have never once been seen in the same room as you.\n\nProvisional finding: either you are in regular contact with an extraterrestrial civilisation, or you are the aliens.\n\nThe aliens have declined to comment.",
+ "arguments_pig": "The study also logs a number of arguments.\n\nThey begin from nothing (a word, a tone, the precise meaning of ‘in a minute’) and grow, with total commitment on both sides, into full disputes. We have argued about whether we were arguing. We have, at least once, swapped sides halfway through and carried on from the wrong side, on principle. Protocol 9 requires every argument to be traced to its cause before it is filed. The route always ends in open water. Nobody loses. Both of us remember winning.\n\nThis was meant to be the serious section. I had a theory: that two people only bother to argue about nothing if each considers the other worth the trouble. It was a good theory. It had diagrams.\n\nFor approximately seventeen seconds, this report remained entirely serious.\n\nThen the subject behaved like a pig again, and the entire scientific model collapsed.\n\nThe pig, when questioned, denied everything, then did it a third time.",
+ "distortion": {
+  "intro": "Standard cartography assumes that a place stays the same regardless of who is standing in it. A beach is a beach; its coordinates do not shift because somebody laughs on it. The entries below suggest that standard cartography is badly incomplete.",
+  "pairs": [
+   {
+    "before": "A beach is sand, salt and a dependable quantity of wind.",
+    "after": "A beach is a memory with a tide."
+   },
+   {
+    "before": "A sunset is the sun going down, daily, free of charge.",
+    "after": "A sunset is something worth staying for, right to the last of the colour."
+   },
+   {
+    "before": "A conversation is words, used once and put away.",
+    "after": "A conversation is something that can be replayed, line by line, on the walk home."
+   },
+   {
+    "before": "An afternoon is one of several hundred, interchangeable and slightly too warm.",
+    "after": "An afternoon is *that* afternoon."
+   },
+   {
+    "before": "A school corridor is the shortest route between two classrooms.",
+    "after": "A school corridor is where a badly timed joke once landed. It is still faintly echoing."
+   },
+   {
+    "before": "A song is three and a half minutes long.",
+    "after": "A song is a coordinate. Play it and you are back there. (The aliens approve.)"
+   },
+   {
+    "before": "A message is a notification.",
+    "after": "A message is light arriving from a known star."
+   }
+  ],
+  "close": "For the avoidance of doubt, every site was re-surveyed. The sand is still sand. The corridor still smells faintly of floor polish. You did not move a single coordinate. You changed what the coordinates mean."
+ },
+ "report": [
+  {
+   "field": "Case File",
+   "value": "0001"
+  },
+  {
+   "field": "Name",
+   "value": "[withheld — see routing slip]"
+  },
+  {
+   "field": "Classification",
+   "value": "Difficult to measure. Intermittently pig."
+  },
+  {
+   "field": "Known Effects",
+   "value": "Unexpected. Cumulative. Mostly noticed afterwards."
+  },
+  {
+   "field": "Primary Influence",
+   "value": "Atmospheric"
+  },
+  {
+   "field": "Secondary Influence",
+   "value": "Tidal. Memories arrive and leave on their own schedule."
+  },
+  {
+   "field": "Threat Level",
+   "value": "Mildly chaotic (revised upward following the pig incident)"
+  },
+  {
+   "field": "Kindness",
+   "value": "Difficult to quantify. Mostly detected in other people’s faces."
+  },
+  {
+   "field": "Ambition",
+   "value": "Concerningly high. Still climbing to cruising altitude."
+  },
+  {
+   "field": "Ability to cause unnecessary arguments",
+   "value": "Exceptional (shared with the observer)"
+  },
+  {
+   "field": "Ability to make ordinary moments memorable",
+   "value": "Under investigation. The investigation is itself under investigation."
+  },
+  {
+   "field": "Declared Likes",
+   "value": "None. All preferences attributed to aliens."
+  },
+  {
+   "field": "Scientific Explanation",
+   "value": "Inconclusive"
+  }
+ ],
+ "index": [
+  {
+   "item": "Ordinary Afternoon",
+   "before": "4.1",
+   "after": "6.8",
+   "note": "Gain traced to one remark the subject has since forgotten making."
+  },
+  {
+   "item": "Conversation",
+   "before": "5.0",
+   "after": "8.2",
+   "note": "Continued for some time after it had ended."
+  },
+  {
+   "item": "Bad Day",
+   "before": "2.3",
+   "after": "4.7",
+   "note": "One stupid joke. Day remained bad, but noticeably less committed to it."
+  },
+  {
+   "item": "School Corridor",
+   "before": "1.9",
+   "after": "5.5",
+   "note": "Floor polish unchanged. Landmark Coefficient now well above 1."
+  },
+  {
+   "item": "Sunset at the Beach",
+   "before": "7.0",
+   "after": "9.1",
+   "note": "Started high. The sun deserves some of the credit; the subject disputes this."
+  },
+  {
+   "item": "Silence",
+   "before": "3.5",
+   "after": "7.2",
+   "note": "Formerly awkward. Now comfortable. The instrument has no setting for this."
+  },
+  {
+   "item": "Early-Morning Start",
+   "before": "1.2",
+   "after": "1.3",
+   "note": "Not even the subject can fix early mornings. +0.1 for effort."
+  },
+  {
+   "item": "Completely Random Argument",
+   "before": "0",
+   "after": "11.4",
+   "note": "The scale stops at 10. The subject argued with the scale."
+  },
+  {
+   "item": "The Subject’s Laugh",
+   "before": "—",
+   "after": "Measurement error",
+   "note": "The needle moved before the sound arrived. Dial not recovered."
+  }
+ ],
+ "turn": "It took an embarrassingly long time to find the flaw in the method.\n\nI thought I was studying you: your phrasing, your exaggerations, your laugh, your aliens. But every entry, read back, was about something else. The room after you laughed. The friend who walked away from a conversation standing slightly straighter. My instruments had never been pointed at you at all. They had been pointed at the world, recording what it did when you passed through it, the way nobody has ever photographed the wind, only the trees.\n\nI thought I was mapping a ~~subject~~ person. I was mapping a wake.\n\nA wake goes on long after the boat has passed. Small acts are only small at the moment they leave your hands; after that, they keep travelling. A kindness done in passing behaves like starlight, still arriving long after the one who sent it has forgotten. A sentence said casually, not even finished, becomes the sentence somebody carries home and turns over like a stone from the beach. Listening, done properly, does more than advice ever manages.\n\nField Notes 017 and 041 were both filed as minor. Both have been reclassified.\n\nYou would probably say you only talked to someone, or listened, or made a stupid joke. That is precisely the point. You do not perform any of it. You do it at ground level, without fuss, and it still shows up from altitude.\n\nSo I have retitled the study, in pencil. It is no longer *What the Subject Does*. It is *What Happens to Everything Else*.",
+ "ambition": "Some people look at the horizon and admire it. You look at it and start planning a route.\n\nWhen you talk about the future, your sentences change tense without asking permission: *if* quietly becomes *when*. What would be a daydream from anyone else comes out of you as a flight plan, with headings and fuel and an arrival time you seem already to have agreed with the future.\n\nRight now the route runs through four days of All-Island netball: alarms set for hours the rest of the island has never heard of, and every match taken apart afterwards, not just the score but the pass that should have gone left. You talk about a game the way pilots talk about weather: without fear, with respect, and with a plan for every sort of turbulence.\n\nWhat the instruments struggle with is the combination. You can be gentle and immovable in the same sentence: soft with people, hard on problems. You laugh easily and you do not give up easily, and the two facts sit side by side without arguing, which is impressive, given how much you argue about everything else.\n\nIn most people, ambition is loud. In you it behaves more like altitude: steady, quiet, and only obvious when somebody looks down and realises how far the ground has gone.\n\nI won’t wish you luck; luck is for people without a route. I’ll wish you good weather, the one thing no pilot can plan, and trust you with the rest.",
+ "things": [
+  "You notice the person everyone else has filed under *fine*, and you quietly reopen the file.",
+  "You bring up, days later, the thing someone was nervous about, just to ask how it went.",
+  "You let people finish. All the way to the end. This is rarer than it sounds.",
+  "You lower your voice when something matters, so people lean in instead of bracing.",
+  "You make serious conversations less frightening by refusing to let them get heavier than they need to be.",
+  "You make silence feel less like a gap and more like a pause somebody chose.",
+  "You exaggerate small disasters so wildly that they shrink back to their actual size.",
+  "You laugh at the wrong moment, and it turns out to have been the right one.",
+  "You turn a throwaway joke into a landmark that people navigate by for months.",
+  "You credit aliens with your own good taste and fool absolutely nobody.",
+  "You start arguments about nothing and then defend the nothing magnificently.",
+  "You walk into a room already mid-thought, carrying a small weather system of your own.",
+  "You make ambition look less like a cliff and more like a runway.",
+  "You hold on to other people’s good news longer than they do.",
+  "You make certain places impossible to walk past without remembering something.",
+  "You don’t realise when you’ve helped someone. You think you were just talking.",
+  "You underestimate small gestures, mostly your own."
+ ],
+ "experiment": {
+  "setup": "Every study needs a control. Take one ordinary day, run it twice, and remove the subject from the second run. Change nothing else. The experiment was conducted entirely in the imagination; the subject could not be persuaded to stand still long enough to be removed.",
+  "constants": [
+   "Weather: warm, with a breeze off the sea by late afternoon",
+   "School: same corridors, same bells, same floor polish",
+   "Beach: same sand, same tide",
+   "Conversations: same people, same topics",
+   "Music: same songs, same order",
+   "Sunset: on schedule",
+   "Jokes: identical, including the bad ones",
+   "Pig incidents: none (control condition)"
+  ],
+  "observations": "The second day ran without fault. The bells rang on time. The tide came in when it said it would. The songs played, but nobody credited them to aliens, so they were only songs. Nobody argued about anything, which was the most suspicious result of the study. Someone went quiet at lunch and, after a while, was assumed to be fine; nobody asked a follow-up question. The late light still came low across the corridor. It simply had less to land on. The instruments logged all of this as ~~nominal conditions~~ quiet. On playback, it sounded more like a room with the windows shut.",
+  "conclusion": "The world does not depend on the subject. It holds together quite well without you; to suggest otherwise would be unscientific, and you would argue about it. Everything still works. It is just flatter, like a map with the contour lines left off: accurate, legible, and missing all the hills. You do not hold the world up. You make certain parts of it more alive. Cartographers call the shading that shows where the ground rises *relief*."
+ },
+ "unmeasurables": [
+  "How much lighter a room becomes after you laugh. (The scales could not agree whether to measure weight or light.)",
+  "The exact duration of a good memory. (Trial ongoing; no end in sight.)",
+  "How many times one sentence can be remembered before it wears out. (No wear detected.)",
+  "The distance between *I’m fine* and actually being fine, and how much of it you close by asking twice.",
+  "The weight of encouragement offered in passing, which appears to increase the longer it is carried.",
+  "The brightness of ambition, observed from the ground. (Instrument dazzled; returned for repair.)",
+  "The value of being heard. (No suitable currency exists.)",
+  "The precise moment an ordinary place became a landmark. (The Landmark Coefficient returned an error.)",
+  "The true length of *in a minute*. (Estimates range from sixty seconds to most of an afternoon. Both parties dispute the range.)"
+ ],
+ "conclusion": {
+  "fields": [
+   {
+    "field": "Case File",
+    "value": "0001"
+   },
+   {
+    "field": "Subject",
+    "value": "[withheld — see routing slip]"
+   },
+   {
+    "field": "Investigation Status",
+    "value": "Incomplete"
+   },
+   {
+    "field": "World Difference",
+    "value": "Confirmed"
+   },
+   {
+    "field": "Cause",
+    "value": "Unknown"
+   },
+   {
+    "field": "Instruments",
+    "value": "Returned to the drawer, still faintly warm"
+   },
+   {
+    "field": "Pig Designation",
+    "value": "Upheld"
+   },
+   {
+    "field": "Further Investigation",
+    "value": "Recommended"
+   },
+   {
+    "field": "Scientific Confidence",
+    "value": "Low"
+   },
+   {
+    "field": "Personal Confidence",
+    "value": "Unfortunately high"
+   }
+  ],
+  "paragraph": "Perhaps the point was never to ~~quantify~~ discover exactly what you change. Perhaps the point was simply to notice: to stand at the edge of ordinary days, see that the tide had moved, and write it down before it moved again."
+ },
+ "ending": "Some people change your life by arriving like a weather front: loud, dramatic, impossible to miss. The maps are redrawn overnight, and everyone remembers the date.\n\nOthers change it the way the sea changes a coastline. Invisibly, a degree at a time. No single wave responsible; every wave involved.\n\nThey do not leave monuments. They leave adjustments. A phrase that slips into the way you talk. A laugh you could pick out of a crowded corridor. A ridiculous argument about nothing. A piece of advice, offered sideways, that turned out to be load-bearing. A moment when someone listened so properly that you heard yourself say the true thing. A stupid joke that is somehow still running. A day that would otherwise have been forgotten, and wasn’t.\n\nYou don’t see the coastline move. You simply notice, one evening, that the tidemark is higher than it used to be, and the map in your hand no longer quite matches the shore.\n\nI have been back through every field note, and through the gaps between their numbers, looking for the date the readings changed. It is not there.\n\nI cannot tell you exactly when the world changed. I only know that, somehow, it did.",
+ "final_line": "The world is the same size it always was. It just has more landmarks in it now.",
+ "fieldnotes": [
+  {
+   "no": "003",
+   "observation": "Subject entered a room without announcing herself. Nothing else of note occurred.",
+   "consequence": "Two conversations adjusted their volume. Neither noticed why. Equipment fault suspected; none found.",
+   "after": "disclaimer"
+  },
+  {
+   "no": "014",
+   "observation": "Subject laughed at something objectively unfunny.",
+   "consequence": "Two people smiled anyway. The joke has since been retold, worse, to general approval.",
+   "after": "talk_listen"
+  },
+  {
+   "no": "017",
+   "observation": "Subject returned a detail mentioned once, weeks earlier, by someone who had forgotten saying it.",
+   "consequence": "The person felt, briefly, as though they had been written down somewhere safe. Filed as minor.",
+   "after": "talk_listen"
+  },
+  {
+   "no": "027",
+   "observation": "Subject became excited about something the aliens liked.",
+   "consequence": "Conversation became approximately 41% more alive. The aliens took full credit.",
+   "after": "excitement_aliens"
+  },
+  {
+   "no": "033",
+   "observation": "Argument logged. Duration: twenty-two minutes. Cause: pending.",
+   "consequence": "Inquiry closed; no cause found. A further argument has broken out about the inquiry.",
+   "after": "arguments_pig"
+  },
+  {
+   "no": "038",
+   "observation": "Sunset observed in the presence of the subject.",
+   "consequence": "Sunset objectively unchanged. The light in the subject’s hair was noted, then struck from the record as irrelevant.",
+   "after": "distortion"
+  },
+  {
+   "no": "041",
+   "observation": "Subject noticed someone wasn’t okay.",
+   "consequence": "The room became slightly less lonely. Subject later described this as ‘nothing’. Filed as minor.",
+   "after": "report"
+  },
+  {
+   "no": "052",
+   "observation": "Subject left for early training while the rest of the island was still asleep.",
+   "consequence": "The sun arrived later. It appeared, if anything, to be catching up.",
+   "after": "ambition"
+  },
+  {
+   "no": "068",
+   "observation": "Subject was told she had helped. Subject did not believe it.",
+   "consequence": "The help remained in effect regardless.",
+   "after": "things"
+  },
+  {
+   "no": "079",
+   "observation": "Control experiment repeated, to be sure.",
+   "consequence": "Both days were fine. The observer would like it noted that ‘fine’ is doing a great deal of work in that sentence.",
+   "after": "experiment"
+  },
+  {
+   "no": "117",
+   "observation": "Observer attempted to measure the subject one final time.",
+   "consequence": "Observer looked up from the instrument instead. Recommended as standard method from now on.",
+   "after": "conclusion"
+  }
+ ],
+ "marginalia": [
+  {
+   "text": "Observer’s handwriting deteriorates from this point.",
+   "after": "disclaimer"
+  },
+  {
+   "text": "None of these were calibrated for you.",
+   "after": "instruments"
+  },
+  {
+   "text": "This detail was not supposed to matter. It did.",
+   "after": "talk_listen",
+   "para": 3
+  },
+  {
+   "text": "Aliens: unconfirmed. Taste: confirmed.",
+   "after": "excitement_aliens",
+   "para": 2
+  },
+  {
+   "text": "Seventeen seconds is generous. I rounded up.",
+   "after": "arguments_pig",
+   "para": "end"
+  },
+  {
+   "text": "Same beach. Not the same beach.",
+   "after": "distortion"
+  },
+  {
+   "text": "11.4 is not a typo. I checked.",
+   "after": "index"
+  },
+  {
+   "text": "No pigs in this section. It took four attempts.",
+   "after": "turn"
+  },
+  {
+   "text": "Route already planned. Of course it was.",
+   "after": "ambition"
+  },
+  {
+   "text": "List incomplete. Ran out of page, not observations.",
+   "after": "things"
+  },
+  {
+   "text": "Did not enjoy running this one.",
+   "after": "experiment"
+  }
+ ],
+ "word_count": null
+}

@@ -1,0 +1,196 @@
+{
+  "caseNo": "0001",
+  "ref": "CSC-0001",
+  "subtitle": "An Unofficial Field Study on the Slight Alterations Caused by One Particular Person",
+  "to": "Chooty Bole",
+  "from": "Matta (Gon Satha)",
+  "re": "Field study, unofficial. Findings enclosed.",
+  "opened": "An ordinary afternoon (it did not stay one)",
+  "handling": "Read slowly. Preferably somewhere with a window.",
+  "slipNote": "Names appear on this slip only. Inside, you are simply *you*, and occasionally *the subject*. You'll know which one is the compliment.",
+  "tocFoot": "Pages are numbered for the archive. The subject is not numbered. Attempts were made.",
+  "sections": [
+    {
+      "id": "disclaimer",
+      "no": "§ 01",
+      "title": "A Professional Disclaimer",
+      "short": "Disclaimer",
+      "sector": "Sector: The Desk"
+    },
+    {
+      "id": "talk_listen",
+      "no": "§ 02",
+      "title": "On the Way You Talk, and the Way You Listen",
+      "short": "Talking & Listening",
+      "sector": "Sector: Conversations",
+      "soft": true
+    },
+    {
+      "id": "excitement_aliens",
+      "no": "§ 03",
+      "title": "Excitement, and a Note Regarding Aliens",
+      "short": "Excitement",
+      "sector": "Sector: Unclassified",
+      "soft": true
+    },
+    {
+      "id": "arguments_pig",
+      "no": "§ 04",
+      "title": "Disputes of No Reasonable Cause",
+      "short": "Disputes",
+      "sector": "Sector: Contested Territory",
+      "soft": true
+    },
+    {
+      "id": "distortion",
+      "no": "§ 05",
+      "title": "World Distortion",
+      "short": "World Distortion",
+      "sector": "Sector: The Beach, Late"
+    },
+    {
+      "id": "report",
+      "no": "§ 06",
+      "title": "Subject Observation Report",
+      "short": "Observation Report",
+      "sector": "Form CSC-7"
+    },
+    {
+      "id": "index",
+      "no": "§ 07",
+      "title": "The World Difference Index™",
+      "short": "Difference Index",
+      "sector": "Scale 0–10 (approx.)"
+    },
+    {
+      "id": "turn",
+      "no": "§ 08",
+      "title": "What I Was Actually Studying",
+      "short": "What I Was Studying",
+      "sector": "Sector: Unmapped",
+      "soft": true
+    },
+    {
+      "id": "ambition",
+      "no": "§ 09",
+      "title": "Altitude",
+      "short": "Altitude",
+      "sector": "Sector: The Horizon",
+      "soft": true
+    },
+    {
+      "id": "things",
+      "no": "§ 10",
+      "title": "Things You Probably Don’t Know You Do",
+      "short": "Things You Do",
+      "sector": "Inventory, Incomplete",
+      "soft": true
+    },
+    {
+      "id": "experiment",
+      "no": "§ 11",
+      "title": "Control Experiment: Remove the Subject",
+      "short": "Control Experiment",
+      "sector": "Experiment 07"
+    },
+    {
+      "id": "unmeasurables",
+      "no": "§ 12",
+      "title": "Measurements We Eventually Abandoned",
+      "short": "Abandoned Measurements",
+      "sector": "Discontinued",
+      "soft": true
+    },
+    {
+      "id": "conclusion",
+      "no": "§ 13",
+      "title": "Case Conclusion",
+      "short": "Case Conclusion",
+      "sector": "Form CSC-9"
+    },
+    {
+      "id": "ending",
+      "no": "§ 14",
+      "title": "Final Entry",
+      "short": "Final Entry",
+      "sector": "Sector: Everywhere, Slightly"
+    },
+    {
+      "id": "poem",
+      "no": "App. A",
+      "title": "The Poem, Recovered from the Notebook",
+      "short": "Appendix",
+      "sector": ""
+    }
+  ],
+  "logged": [
+    "Logged: a Tuesday, probably",
+    "Logged: during a conversation",
+    "Logged: late afternoon",
+    "Logged: between classes",
+    "Logged: weather changeable",
+    "Logged: after the fact",
+    "Logged: from memory (reliable)",
+    "Logged: near the sea",
+    "Logged: on the way home",
+    "Logged: twice, to be sure",
+    "Logged: without permission",
+    "Logged: at an inconvenient time"
+  ],
+  "figs": {
+    "laugh": "Propagation of one laugh across an ordinary room. Not to scale. Nothing about it was to scale.",
+    "grid": "Local distortion of meaning in the vicinity of the subject.",
+    "flight": "Two ways of looking at a horizon.",
+    "experiment": "Liveliness of one ordinary day, two conditions. Both lines are alive. One is more so."
+  },
+  "pulls": [
+    {
+      "lines": [
+        "You did not move a single coordinate.",
+        "You changed what the coordinates mean."
+      ],
+      "src": "From § 05 · World Distortion"
+    },
+    {
+      "lines": [
+        "Some people look at the horizon and admire it.",
+        "You look at it and start planning a route."
+      ],
+      "src": "From § 09 · Altitude"
+    }
+  ],
+  "photoNote": "Not attached. Every exposure came out slightly brighter than the room actually was.",
+  "indexIntro": "Readings taken across a range of ordinary conditions, before and after the subject entered them. Higher is more alive. The instrument has not been calibrated since it met you.",
+  "indexFoot": "™ The World Difference Index is not registered anywhere. It is barely registered here. Readings above 10 are not supposed to happen and have been reported to no one.",
+  "abandonVals": [
+    "± a lot",
+    "n/a",
+    "err.",
+    "4.2?",
+    "—",
+    "too many",
+    "unknown",
+    "roughly infinite",
+    "pending",
+    "see note"
+  ],
+  "appendixNote": "Found folded inside the back cover of Case File 0001. Pencil. Not to be entered as evidence.",
+  "finalLines": [
+    "Some people don’t change the world.",
+    "They simply change the way you notice it."
+  ],
+  "conditions": [
+    "Conditions: fair, improving",
+    "Wind: light, from the sea",
+    "Visibility: good, then better",
+    "Tide: coming in",
+    "Bearing: 270°, west",
+    "Pressure: rising",
+    "Cloud: scattered, harmless",
+    "Altitude: still climbing",
+    "Humidity: emotional",
+    "Temperature: warmer",
+    "Weather: changeable",
+    "Light: late, gold"
+  ]
+}
