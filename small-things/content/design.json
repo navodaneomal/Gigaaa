@@ -160,19 +160,18 @@
     }
   ],
   "photoNote": "Not attached. Every exposure came out slightly brighter than the room actually was.",
-  "indexIntro": "Readings taken across a range of ordinary conditions, before and after the subject entered them. Higher is more alive. The instrument has not been calibrated since it met you.",
+  "indexIntro": "Readings taken across a range of ordinary conditions, before and after the subject entered them. Higher is more alive. The instrument has been recalibrated twice since it met you. Neither attempt held.",
   "indexFoot": "™ The World Difference Index is not registered anywhere. It is barely registered here. Readings above 10 are not supposed to happen and have been reported to no one.",
   "abandonVals": [
     "± a lot",
-    "n/a",
-    "err.",
-    "4.2?",
-    "—",
-    "too many",
-    "unknown",
     "roughly infinite",
-    "pending",
-    "see note"
+    "too many",
+    "4.2?",
+    "increasing",
+    "n/a",
+    "no currency",
+    "err.",
+    "disputed"
   ],
   "appendixNote": "Found folded inside the back cover of Case File 0001. Pencil. Not to be entered as evidence.",
   "finalLines": [

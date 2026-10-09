@@ -22,7 +22,7 @@
 .cover__sub { margin: 0 auto; max-width: 84mm; font-style: italic; font-size: 11.6pt; line-height: 1.36; color: var(--ink); text-wrap: balance; }
 .cover__form { position: absolute; left: 13mm; bottom: 26mm; width: calc(var(--pw) - 26mm); }
 .cover__form td.k { width: 34%; }
-.cover__stamp { right: 12mm; bottom: 30mm; transform: rotate(-9deg); font-size: 9pt; }
+.cover__stamp { right: 12mm; bottom: 26.5mm; transform: rotate(-9deg); font-size: 9pt; }
 .cover__foot { position: absolute; left: 13mm; right: 13mm; bottom: 15.5mm; display: flex; justify-content: space-between; font-family: var(--sans); font-size: 6pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); }
 .cover .ruler { left: 13mm; right: 13mm; bottom: 11.5mm; }
 

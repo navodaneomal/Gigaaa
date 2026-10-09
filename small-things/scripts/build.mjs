@@ -65,7 +65,7 @@ function contours() {
     for (let a = 0; a <= 64; a++) {
       const t = (a / 64) * Math.PI * 2;
       const rr = r * (1 + 0.09 * Math.sin(3 * t + k * 0.7) + 0.05 * Math.cos(5 * t - k));
-      const x = cx + Math.cos(t) * rr * 1.25, y = cy + Math.sin(t) * rr * 0.82;
+      const x = cx + Math.cos(t) * rr * 1.12, y = cy + Math.sin(t) * rr * 0.82;
       d += (a ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
     }
     s += `<path d="${d}Z" fill="none" stroke="${NAVY}" stroke-width="${k % 3 === 0 ? 0.9 : 0.5}" opacity="${0.5 - k * 0.03}"/>`;
@@ -73,22 +73,23 @@ function contours() {
   s += `<path d="M24 222 C 70 200, 90 160, 132 138" fill="none" stroke="${GOLD}" stroke-width="1.1" stroke-dasharray="2 3"/>`;
   s += `<g stroke="${NAVY}" stroke-width="1.3" stroke-linecap="round"><path d="M144 112 L156 124"/><path d="M156 112 L144 124"/></g>`;
   s += `<text x="161" y="112" font-family="Plex Condensed" font-size="7" letter-spacing="1" fill="${NAVY}">SUBJECT (APPROX.)</text>`;
-  s += `<text x="30" y="214" font-family="Plex Condensed" font-size="6" letter-spacing="1" fill="${FAINT}">ROUTE OF OBSERVER</text>`;
+  s += `<text x="30" y="214" font-family="Plex Condensed" font-size="7" letter-spacing="0.8" fill="${FAINT}">ROUTE OF OBSERVER</text>`;
   return `<svg viewBox="0 0 300 240" aria-hidden="true">${s}</svg>`;
 }
 function laughFigure() {
   let s = `<rect x="6" y="6" width="288" height="118" fill="none" stroke="${INK}" stroke-width="0.8" opacity="0.6"/>`;
   s += `<path d="M120 6 v10 M120 34 v12" stroke="${INK}" stroke-width="0.8" opacity="0.6"/>`; // a doorway
   const ox = 46, oy = 74;
+  s += `<defs><clipPath id="fig-room"><rect x="6" y="6" width="288" height="118"/></clipPath></defs><g clip-path="url(#fig-room)">`;
   for (let k = 1; k <= 6; k++) s += `<path d="M${ox + k * 22} ${oy - k * 16} A ${k * 27} ${k * 27} 0 0 1 ${ox + k * 22} ${oy + k * 16}" fill="none" stroke="${GOLD}" stroke-width="${1.2 - k * 0.12}" opacity="${0.95 - k * 0.12}"/>`;
-  s += `<circle cx="${ox}" cy="${oy}" r="4" fill="${NAVY}"/>`;
+  s += `</g><circle cx="${ox}" cy="${oy}" r="4" fill="${NAVY}"/>`;
   const people = [[150, 40], [176, 96], [214, 58], [246, 104], [262, 32], [112, 104]];
   people.forEach(([x, y], i) => {
     s += `<circle cx="${x}" cy="${y}" r="5.5" fill="none" stroke="${INK}" stroke-width="0.8"/>`;
     s += `<path d="M${x - 2.6} ${y + 1} q 2.6 2.6 5.2 0" fill="none" stroke="${i === 3 ? FAINT : NAVY}" stroke-width="0.9" stroke-linecap="round"/>`;
   });
   s += `<text x="${ox - 6}" y="${oy + 17}" font-family="Plex Condensed" font-size="6.5" letter-spacing="0.8" fill="${NAVY}">ORIGIN</text>`;
-  s += `<text x="196" y="120" font-family="Plex Condensed" font-size="6" letter-spacing="0.6" fill="${FAINT}">1 HOLDOUT (TEMPORARY)</text>`;
+  s += `<text x="196" y="120" font-family="Plex Condensed" font-size="7" letter-spacing="0.5" fill="${FAINT}">1 HOLDOUT (TEMPORARY)</text>`;
   return `<svg viewBox="0 0 300 130" aria-hidden="true">${s}</svg>`;
 }
 function distortionGrid() {
@@ -98,7 +99,7 @@ function distortionGrid() {
     const k = 24 * Math.exp(-(r * r) / (2 * 46 * 46));
     return [x + (dx / r) * k, y + (dy / r) * k];
   };
-  let s = '';
+  let s = `<defs><clipPath id="fig-grid"><rect x="0" y="0" width="${w}" height="${h}"/></clipPath></defs><g clip-path="url(#fig-grid)">`;
   for (let x = 0; x <= w; x += step) {
     let d = '';
     for (let y = 0; y <= h; y += 3) { const [a, b] = warp(x, y); d += (y ? 'L' : 'M') + a.toFixed(1) + ' ' + b.toFixed(1); }
@@ -109,9 +110,9 @@ function distortionGrid() {
     for (let x = 0; x <= w; x += 3) { const [a, b] = warp(x, y); d += (x ? 'L' : 'M') + a.toFixed(1) + ' ' + b.toFixed(1); }
     s += `<path d="${d}" fill="none" stroke="${NAVY}" stroke-width="0.45" opacity="0.55"/>`;
   }
-  s += `<circle cx="${cx}" cy="${cy}" r="3.2" fill="${GOLD}"/><circle cx="${cx}" cy="${cy}" r="9" fill="none" stroke="${GOLD}" stroke-width="0.7" stroke-dasharray="1.5 2"/>`;
+  s += `</g><circle cx="${cx}" cy="${cy}" r="3.2" fill="${GOLD}"/><circle cx="${cx}" cy="${cy}" r="9" fill="none" stroke="${GOLD}" stroke-width="0.7" stroke-dasharray="1.5 2"/>`;
   s += `<text x="${cx + 13}" y="${cy - 10}" font-family="Plex Condensed" font-size="6.5" letter-spacing="0.8" fill="${NAVY}">SUBJECT</text>`;
-  s += `<rect x="3" y="${h - 14}" width="186" height="11" fill="#f7f1e3" opacity="0.92"/><text x="6" y="${h - 6}" font-family="Plex Condensed" font-size="6" letter-spacing="0.6" fill="${FAINT}">GRID: ORDINARY MEANING, 1 SQUARE = 1 AFTERNOON</text>`;
+  s += `<rect x="3" y="${h - 15}" width="212" height="12" fill="#f7f1e3" opacity="0.92"/><text x="6" y="${h - 6}" font-family="Plex Condensed" font-size="7" letter-spacing="0.5" fill="${FAINT}">GRID: ORDINARY MEANING, 1 SQUARE = 1 AFTERNOON</text>`;
   return `<svg viewBox="0 0 ${w} ${h}" aria-hidden="true"><rect x="0" y="0" width="${w}" height="${h}" fill="none" stroke="${INK}" stroke-width="0.6" opacity="0.5"/>${s}</svg>`;
 }
 function flightFigure() {
@@ -120,12 +121,12 @@ function flightFigure() {
   s += `<path d="M14 116 C 90 112, 150 70, 288 18" fill="none" stroke="${GOLD}" stroke-width="1.4" stroke-dasharray="3 3"/>`;
   [[60, 'FL 010'], [130, 'FL 080'], [200, 'FL 240'], [262, 'FL ???']].forEach(([x, t]) => {
     const y = x < 100 ? 109 : x < 160 ? 82 : x < 230 ? 52 : 30;
-    s += `<path d="M${x} ${y - 4} v-6" stroke="${NAVY}" stroke-width="0.6"/><text x="${x - 9}" y="${y - 13}" font-family="Plex Condensed" font-size="6" letter-spacing="0.6" fill="${NAVY}">${t}</text>`;
+    s += `<path d="M${x} ${y - 4} v-6" stroke="${NAVY}" stroke-width="0.6"/><text x="${x - 9}" y="${y - 13}" font-family="Plex Condensed" font-size="7" letter-spacing="0.5" fill="${NAVY}">${t}</text>`;
   });
   s += `<path d="M288 18 l-11 2 l4 3 l-2 6 z" fill="${NAVY}"/>`;
   s += `<path d="M150 118 q 30 -9 60 0 q 30 9 60 0" fill="none" stroke="${FAINT}" stroke-width="0.6"/>`;
-  s += `<text x="150" y="134" font-family="Plex Condensed" font-size="6" letter-spacing="0.6" fill="${FAINT}">HORIZON (FOR ADMIRING)</text>`;
-  s += `<text x="196" y="40" font-family="Plex Condensed" font-size="6" letter-spacing="0.6" fill="${NAVY}">ROUTE (FOR TAKING)</text>`;
+  s += `<text x="150" y="134" font-family="Plex Condensed" font-size="7" letter-spacing="0.5" fill="${FAINT}">HORIZON (FOR ADMIRING)</text>`;
+  s += `<text x="214" y="68" font-family="Plex Condensed" font-size="7" letter-spacing="0.5" fill="${NAVY}">ROUTE (FOR TAKING)</text>`;
   return `<svg viewBox="0 0 300 142" aria-hidden="true">${s}</svg>`;
 }
 function experimentFigure() {
@@ -136,8 +137,8 @@ function experimentFigure() {
   const flat = (h) => 0.34 + 0.05 * Math.sin(h * 1.7) + 0.03 * Math.sin(h * 3.1 + 1);
   const path = (f) => { let d = ''; for (let h = 6; h <= 22.001; h += 0.2) d += (h === 6 ? 'M' : 'L') + t2x(h).toFixed(1) + ' ' + (base - f(h) * 80).toFixed(1); return d; };
   let s = `<path d="M${x0} ${base}H${x1}" stroke="${INK}" stroke-width="0.6" opacity="0.55"/>`;
-  [6, 10, 14, 18, 22].forEach((h) => (s += `<path d="M${t2x(h)} ${base}v3" stroke="${INK}" stroke-width="0.6" opacity="0.55"/><text x="${t2x(h) - 8}" y="${base + 11}" font-family="Plex Condensed" font-size="6" fill="${FAINT}">${String(h).padStart(2, '0')}:00</text>`));
-  s += `<text x="0" y="${base - 66}" font-family="Plex Condensed" font-size="6" fill="${FAINT}" transform="rotate(-90 6 ${base - 40})">LIVELINESS</text>`;
+  [6, 10, 14, 18, 22].forEach((h) => (s += `<path d="M${t2x(h)} ${base}v3" stroke="${INK}" stroke-width="0.6" opacity="0.55"/><text x="${t2x(h) - 8}" y="${base + 11}" font-family="Plex Condensed" font-size="7" fill="${FAINT}">${String(h).padStart(2, '0')}:00</text>`));
+  s += `<text x="0" y="0" font-family="Plex Condensed" font-size="7" fill="${FAINT}" transform="translate(9 ${base - 18}) rotate(-90)">LIVELINESS</text>`;
   s += `<path d="${path(flat)}" fill="none" stroke="${BROWN}" stroke-width="1.4" stroke-dasharray="4 2.5"/>`;
   s += `<path d="${path(lively)}" fill="none" stroke="${NAVY}" stroke-width="1.5"/>`;
   s += `<text x="${t2x(19.2)}" y="${base - flat(22) * 80 + 12}" font-family="Plex Condensed" font-size="6.4" fill="${BROWN}">WITHOUT</text>`;
@@ -291,14 +292,14 @@ const indexRows = L.index.map((r) => `<div class="wdi__row">
 
 /* poem */
 const poemOpener = fixedPage('appendix', `
-  <div class="appx">
+  <div class="appx" data-sec="App. A|The Poem" data-anchor="poem">
     <div class="label">Appendix A</div>
     <p class="appx__note">${md(D.appendixNote)}</p>
     <div class="hr hr--gold"></div>
     <h2 class="appx__title">${md(P.title)}</h2>
     ${P.epigraph ? `<p class="appx__epi">${md(P.epigraph)}</p>` : ''}
   </div>`, 'page--center');
-const poemSecs = P.sections.map((s, i) => `<section class="poem-sec" data-newpage data-split="stanzas" data-sec="App. A|The Poem" ${i === 0 ? 'data-anchor="poem"' : ''}>
+const poemSecs = P.sections.map((s, i) => `<section class="poem-sec" data-newpage data-split="stanzas" data-sec="App. A|The Poem">
   <div class="poem-head"><div class="num">${esc(s.numeral)}</div>${s.heading ? `<div class="h">${md(s.heading)}</div>` : ''}</div>
   ${paras(s.text).map((st) => `<div class="stanza">${st.split('\n').map((ln) => md(ln)).join('\n')}</div>`).join('\n')}
 </section>`).join('\n');
@@ -323,11 +324,11 @@ push(`<div class="box keep"><div class="box__title label">Standard instruments &
 push(notesAfter('disclaimer'), notesAfter('instruments'));
 
 push(head('talk_listen'), sectionProse('talk_listen', L.talk_listen, { dropcap: true }), notesAfter('talk_listen'));
-push(head('excitement_aliens'), sectionProse('excitement_aliens', L.excitement_aliens, { dropcap: true, figAfter: 0, fig: fig(laughFigure(), 2, D.figs.laugh) }), notesAfter('excitement_aliens'));
+push(head('excitement_aliens'), sectionProse('excitement_aliens', L.excitement_aliens, { dropcap: true, figAfter: 0, fig: fig(laughFigure(), 1, D.figs.laugh) }), notesAfter('excitement_aliens'));
 push(head('arguments_pig'), sectionProse('arguments_pig', L.arguments_pig, { dropcap: true }), notesAfter('arguments_pig'));
 
 push(head('distortion'), sectionProse('distortion', L.distortion.intro, { dropcap: true }));
-push(fig(distortionGrid(), 3, D.figs.grid), notesAfter('distortion'));
+push(fig(distortionGrid(), 2, D.figs.grid), notesAfter('distortion'));
 push(`<table class="ba keep"><thead><tr><th>Before the subject enters</th><th>After the subject enters the story</th></tr></thead><tbody>${L.distortion.pairs.map((p) => `<tr><td>${md(p.before)}</td><td>${md(p.after)}</td></tr>`).join('')}</tbody></table>`);
 push(prose(L.distortion.close));
 if (D.pulls[0]) push(pull(D.pulls[0]));
@@ -339,7 +340,7 @@ indexRows.forEach((row) => push(`<div class="wdi keep">${row}</div>`));
 push(`<p class="faint" style="font-size:8.6pt;margin-top:2.4mm" data-split="p">${md(D.indexFoot)}</p>`, notesAfter('index'));
 
 push(head('turn'), sectionProse('turn', L.turn, { dropcap: true }), notesAfter('turn'));
-push(head('ambition'), sectionProse('ambition', L.ambition, { dropcap: true, figAfter: 1, fig: fig(flightFigure(), 4, D.figs.flight) }), notesAfter('ambition'));
+push(head('ambition'), sectionProse('ambition', L.ambition, { dropcap: true, figAfter: 1, fig: fig(flightFigure(), 3, D.figs.flight) }), notesAfter('ambition'));
 if (D.pulls[1]) push(pull(D.pulls[1]));
 
 push(head('things'), `<ol class="nlist" data-split="list">${L.things.map((t, i) => `<li><span class="n">${String(i + 1).padStart(2, '0')}</span><span>${md(t)}</span></li>`).join('')}</ol>`, notesAfter('things'));
@@ -348,7 +349,7 @@ push(head('experiment'));
 push(`<div class="proto__h label keep" data-keep>Procedure</div>`, prose(L.experiment.setup));
 push(`<div class="keep"><div class="proto__h label">Held constant</div><ul class="checks">${L.experiment.constants.map((c) => `<li>${md(c)}</li>`).join('')}</ul></div>`);
 push(`<div class="proto__h label" data-keep>Observations</div>`, prose(L.experiment.observations));
-push(fig(experimentFigure(), 5, D.figs.experiment));
+push(fig(experimentFigure(), 4, D.figs.experiment));
 push(`<div class="proto__h label" data-keep>Conclusion</div>`, prose(L.experiment.conclusion), notesAfter('experiment'));
 
 push(head('unmeasurables'), `<ul class="abandon" data-split="list">${L.unmeasurables.filter((u) => !/^\s*result\s*:/i.test(u)).map((u, i) => `<li><span>${md(u)}</span><span class="val">${esc(D.abandonVals[i % D.abandonVals.length])}</span></li>`).join('')}</ul>`, `<div class="result keep" style="position:relative"><b>Result</b>Human variables remain inconveniently immeasurable.<span class="stamp stamp--abs" style="right:3mm;bottom:-13mm;transform:rotate(-8deg)">Abandoned</span></div>`, notesAfter('unmeasurables'));
